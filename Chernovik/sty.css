@@ -1,0 +1,21 @@
+
+nav {
+  background-color: #262626;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  height: 70px;
+}
+
+main {
+  /* padding: 40px; */
+  background-color: #fff;
+  /* height: 100%; */
+  column-count: 1;
+  width: inherit;
+}
+
+aside {
+  background-color: #f7f7f7;
+  padding: 40px 20px;
+  width: 70%;
+  float: left;
+}
