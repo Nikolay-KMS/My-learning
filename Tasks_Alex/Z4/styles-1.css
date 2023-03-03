@@ -9,17 +9,14 @@
   align-items: center;
   margin: auto;
   /* background-color:rgba(209, 15, 15, 0); */
-  /* background-color: burlywood; */
-  /* display: flex;
-  column-count: 1;
-  flex-direction: column; */
+  background-color: burlywood;
 }
 
 header {
   /* width: 1280px; */
   height: 189px;
-  margin: 0px 0px 48px 0px;
-  /* bottom: 0px; */
+  margin: 63px 0px 48px 0px;
+  bottom: 0px;
 }
 
 .main-lable {
@@ -75,10 +72,15 @@ header {
 }
 .main-body {
   display: flex;
+  /* width: 100%; */
+  /* margin-left: 100px; ; */
   justify-content: space-between;
+
 }
 
 .menu-aside {
+  /* display: flex; */
+  /* width: 344px; */
   height: fit-content;
   font-size: 27px;
   line-height: 27px;
@@ -118,14 +120,8 @@ header {
   background-color: #DBDBDB;
 }
 
-.body-right {
-  /* display: flex; */
-  width: 882px;
-
-}
-
 .main-picture {
-  /* width: 880px; */
+  width: 882px;
   height: 529px;
   border: #000000 solid 1px;
   display: flex;
@@ -135,13 +131,6 @@ header {
   width: 320px;
   height: 381px;
   margin: auto;
-  transition: 1s;
-
-}
-
-.picture1:hover {
-  width: 400px;
-  height: 481px;
 }
 
 .text {
@@ -150,54 +139,20 @@ header {
 }
 
 .footer ul {
-  /* text-align: center; */
-  align-items: center;
+  height: 69px;
+  background-color: #4BCAFF;
+}
+
+
+.footer ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-left: 40px;
 }
 
 .footer a {
-  /* background-color: #4BCAFF; */
   text-decoration: none;
   margin: 0;
-  padding: 17px 12px 9px 10px; 
-  margin-bottom: 0px;
-  font-size: 28px;
-  line-height: 28px;
-  color: #0C1927;
-  /* padding-top:calc(100%);
-  padding-bottom: auto; */
-  /* font-style: normal; */
-}
-
-.footer a:hover {
-  /* text-decoration:underline ; */
-  border-bottom: #3181A6 solid 2px;
-  color: #3181A6;
-  /* font-weight: 400; */
-}
-
-
-.footer {
-  /* text-align: center; */
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  height: 69px;
-  background-color: rgba(99, 105, 110, 0.48);
-}
-
-.footer p {
-  font-size: 28px;
-  line-height: 28px;
-  margin: 0;
-  color: #010101;
-  margin-right: 40px;
-  /* padding: 20px 10px 21px 10px;  */
-    /* text-align: center; */
-    /* align-items: center; */
 
 }
