@@ -43,14 +43,6 @@ header {
   background-color:#35444f;
 }
 
-.menu-button div:nth-child(1) {
-  width: 160px;
-}
-
-.menu-button div:last-child {
-  background-color:#35444f;
-}
-
 .menu-button li {
   list-style: none;
 }
@@ -73,9 +65,15 @@ header {
 .menu-button a:hover {
   background-color:#222F3A;
 }
-.menu-button div + div {
+
+.menu-button a {
   border-left: #fff solid 1px; 
 }
+
+.menu-button li:last-child {
+  border-right: #fff solid 1px; 
+}
+
 .main-body {
   display: flex;
   justify-content: space-between;
