@@ -31,10 +31,16 @@ header {
 }
 
 .menu-button {
-  width: 1280px;
   height: 69px;
   background-color:#35444f;
   display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.menu-line {
+  align-items: center;
+  background-color:#35444f;
 }
 
 .menu-button div:nth-child(1) {
@@ -43,6 +49,16 @@ header {
 
 .menu-button div:last-child {
   background-color:#35444f;
+}
+
+.menu-button li {
+  list-style: none;
+}
+
+.menu-line-tap ul {
+  padding: 0;
+  margin: 0;  
+  margin-left: 160px;
 }
 
 .menu-button a {
@@ -87,11 +103,15 @@ header {
   color: #485863;
   text-decoration: none;
   white-space: nowrap;
+
 }
 
 .menu-aside a:hover {
   color: #000;
   background-color: #DBDBDB;
+  padding: 26px 10px 26px 64px;
+  transition: 0.4s;
+
 }
 
 .body-right {
@@ -114,6 +134,7 @@ header {
 .picture1:hover {
   width: 400px;
   height: 481px;
+  cursor: pointer;
 }
 
 .text {
