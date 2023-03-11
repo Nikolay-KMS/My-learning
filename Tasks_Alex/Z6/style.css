@@ -1,13 +1,7 @@
-/* .temp {
-  height: 400px;
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 p {
   margin: 0;
 }
-
 .body { 
   padding-top: 46px;
   margin: auto;
@@ -27,7 +21,6 @@ p {
   font-size: 18px;
   line-height: 18px;
 }
-
 .nav {
   display: flex;
   justify-content: space-between;
@@ -58,7 +51,6 @@ a {
 .contakt-right a { 
   display: block;
 }
-
 .e-mail { 
   padding-bottom: 1px;
   margin-bottom: 19px;
@@ -76,10 +68,7 @@ a {
   padding-bottom: 37px;
 }
 .content-item {
-  position: relative;
-}
-.e {
-  margin-bottom: 50px;
+  position: relative; 
 }
 .content-item:hover .active-window { 
   opacity: 1;
@@ -94,7 +83,6 @@ a {
   padding: 1.5px 0;
   margin: 20px 0 0px 0;
   text-align: center;
-
 }
 
 .footer {
@@ -111,6 +99,11 @@ a:hover {
 .logo:hover {
   background-color: #F26522;
 }
+.content-item-box {
+  overflow: hidden;
+  position: relative;
+}
+
 .active-window {
   width: 300px;
   height: 55px;
