@@ -72,7 +72,8 @@ a {
 }
 .content-item:hover .active-window { 
   opacity: 1;
-  transition: margin-top 0.9s;
+  /* transition: 1s; */
+  transition: 1s ease-out;
   margin-top: 0px;
 }
 .content-item-picture { 

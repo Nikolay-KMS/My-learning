@@ -1,15 +1,28 @@
-.parent {
-  /* background-color: #f08383; */
-  margin: 10px;
+
+.parent1 {
+  background-color: #f08383;
+  width: 1000px;
+  height: 500px;
+  
+}
+
+.parent2 {
+  /* height: 100%; */
+  display: grid;
+  /* flex-wrap: wrap; */
+  /* align-items:center; */
+  /* align-content: space-between; */
+  /* justify-content: space-between; */
+  /* justify-items: center; */
+  /* grid-auto-rows: 1fr 1fr 1fr; */
+  /* grid-auto-columns: 1fr 1fr 1fr; */
+  background-color: #f7ef7f;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .child {
-  opacity: 0;
-  /* visibility: hidden; */
+  width: 200px;
+  height: 100px;
+  background: darkgreen;
+  margin: 5px;
 }
-
-.parent:hover .child{
-  color: aqua;
-  opacity: 1;
-  /* visibility: visible; */
-  }
