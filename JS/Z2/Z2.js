@@ -12,6 +12,7 @@ if (!age || !+age) {                                 // проверка пра�
 console.log(userName);
 console.log(age);
 
+
 if (age < 18 ) {                                        // если возраст до 18-ти лет
   alert('You are not allowed to visit this website')
 } else if (age <= 22) {                                // если возраст до 22-ти лет
