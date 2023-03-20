@@ -1,11 +1,10 @@
 "use strict"
 
-let userName = prompt('Write your name');
-if ( !userName || !!+userName ) {                          // проверка правильности ввода имени (Null, empty, number)
-  userName = prompt('Write your name correct', userName) 
-}
+let userName = prompt('Write your name'); 
+while ( !userName || !!+userName ) {                          // проверка правильности ввода имени (Null, empty, number)
+  userName = prompt('Write your name correct', userName) }
 let age = prompt('Write your age');
-if (!age || !+age) {                                 // проверка правильности ввода возраста (Null, empty, string)
+while (!age || !+age) {                                 // проверка правильности ввода возраста (Null, empty, string)
   age = prompt('Write your age correct', age) 
 }
 
@@ -22,6 +21,6 @@ if (age < 18 ) {                                        // если возрас
   } else {                                              
     alert ('You are not allowed to visit this website')      // если нажал Отмена
   }
-} else if (age > 22) {                                   // если возраст более 22-ти лет
+} else {                                   // если возраст более 22-ти лет
   alert (`Welcome, ${userName}`) 
 }
