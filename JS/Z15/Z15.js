@@ -8,7 +8,8 @@ function factorial(m) {
   return pow;
 }
 let n;
-while (isNaN(n) || !null) {
+while (isNaN(n) || !n) {
   n = prompt ('Write number', n);
 }
 alert (factorial(n))
+
