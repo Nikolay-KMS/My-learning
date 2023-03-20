@@ -21,4 +21,3 @@ for (let i = 5; i <= n; i+=5) {
 if (count == 0) {
   alert('Sorry, no numbers')
 }
-
