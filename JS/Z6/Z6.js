@@ -20,7 +20,18 @@ function createNewUser() {
     },
     getAge() {
       let today = new Date ();
-      return (today.getFullYear() - this.birthday.getFullYear());
+      // let today = new Date(`2023 11 19`);
+      // newUser.birthday = new Date(`2022 11 20`);
+
+      // let t = (today-this.birthday);
+      // console.log(t.getFullYear());
+      let dayNewTear = new Date ("2023,01,01");
+
+      // return (today.getFullYear() - this.birthday.getFullYear());
+      return dayNewTear.getFullYear() - 
+      (new Date (this.birthday.getTime() - today.getTime() + dayNewTear.getTime() - 1)).getFullYear() - 1;
+      // console.log(dayNewTear.getFullYear() - 
+      // (new Date (this.birthday.getTime() - today.getTime() + dayNewTear.getTime() - 1)).getFullYear() - 1);
     },
     getPassword() {
       return (`${this._firstName[0].toUpperCase()}${this._lastName}${this.birthday.getFullYear()}`);
@@ -33,7 +44,7 @@ function createNewUser() {
   newUser.lastName = "ivanov";
   let wrongDate = prompt(`Write you birthday in format: dd.mm.yyyy`);
   newUser.birthday = new Date(`${wrongDate.slice(6)} ${wrongDate.slice(3, 5)} ${wrongDate.slice(0, 2)}`);
-  // newUser.birthday = new Date(`1987 05 11`);
+  // newUser.birthday = new Date(`1975 01 01`);
   return newUser;
 };
 
