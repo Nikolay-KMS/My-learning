@@ -26,6 +26,7 @@ function createNewUser() {
       return (`${this._firstName[0].toUpperCase()}${this._lastName}${this.birthday.getFullYear()}`);
     }
   };
+
   // newUser.firstName = prompt (`Write you first name`);
   // newUser.lastName = prompt (`Write you last name`);
   newUser.firstName = "nik";
@@ -35,6 +36,7 @@ function createNewUser() {
   // newUser.birthday = new Date(`1987 05 11`);
   return newUser;
 };
+
 const user = createNewUser();
 console.log(user);
 console.log(`Login is ${user.getLogin()}`); 
