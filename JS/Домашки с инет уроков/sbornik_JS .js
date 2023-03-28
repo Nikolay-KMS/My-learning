@@ -463,3 +463,25 @@
 // }
 // multiplyNumeric(menu);
 // console.log(menu);
+
+// Напишіть функцію sumInput() яка: Просить користувача ввести дані за допомогою prompt та зберігає їх в масив.
+// Закінчує робити запити в користувача після того, як введено не числове значення, порожня строка або натиснуто “відмінити”.
+// Підраховує та повертає суму елементів масиву.
+
+// const arr = [];
+// function sumInput() {
+//   while (true) {
+//     let value = prompt('Write a number');
+//     if (value === null || value === "" || isNaN((+value))) break;
+//     arr.push (+value);    
+//   }
+//   let sum = 0;
+//   for (const item of arr) {
+//     sum += item;
+//   }
+//   return sum;
+// };
+// console.log(`Summ ${sumInput()}`);
+// console.log(arr);
+
+
