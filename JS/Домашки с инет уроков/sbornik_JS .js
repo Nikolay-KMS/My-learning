@@ -1,5 +1,5 @@
 "use strict"
-                                        //  Сумма n-чисел, три варианта
+//  Сумма n-чисел, три варианта
 // let sumTo = (n) => {
 //   let sum =0;
 //   for (let i = 0; i < n; i++) {
@@ -32,14 +32,14 @@
 // let sumTo = (n) => n * (n + 1) / 2;
 // console.log(sumTo(10));
 
-                                    // Завдання полягає в тому, щоб написати функцію factorial(n), яка обчислює n! за допомогою рекурсивних викликів.
+// Завдання полягає в тому, щоб написати функцію factorial(n), яка обчислює n! за допомогою рекурсивних викликів.
 
 // function factorial(n) {
 //   return (n === 1) ?  1 : n * factorial(n - 1);
 // }
 // console.log(factorial(5));
 
-                                                             // Напишіть функцію fib(n), яка повертає n-th число Фібоначчі.
+// Напишіть функцію fib(n), яка повертає n-th число Фібоначчі.
 
 // function fib(n) {
 //   let numb;                                //    искомое число 
@@ -56,7 +56,7 @@
 // }
 // console.log(fib(77));
 
-                                                    //  Напишіть функцію printList(list), що виводить список елементів один за одним.
+//  Напишіть функцію printList(list), що виводить список елементів один за одним.
 
 // let list = {
 //   value: 1,
@@ -484,4 +484,238 @@
 // console.log(`Summ ${sumInput()}`);
 // console.log(arr);
 
+// Напишіть функцію camelize(str), яка перетворює такі рядки “my-short-string” в “myShortString”. Тобто дефіси видаляються, а всі слова після них починаються з великої літери.
 
+// function camelize (str) {
+//   let arr = str.split('-');
+//   const arr2 = arr.map((element, index) => {
+//     return index === 0 ? element : element[0].toUpperCase() + element.slice(1);
+//   });
+//   return arr2.join('');
+// };
+// const string = "background-color";
+// const string2 = "ist-style-image";
+// console.log( camelize (string));
+
+// Напишіть функцію filterRange(arr, a, b), яка приймає масив arr, шукає в ньому елементи більші-рівні a та менші-рівні b і віддає масив цих елементів.
+// Функція повинна повертати новий масив і не змінювати вихідний
+
+// let filterRange = (arr, a, b) => {
+//   return arr.filter(elem => 
+//     (elem >= a && elem <= b ));
+// };
+// let arr = [5, 3, 8, 1];
+// let filtered = filterRange(arr, 1, 4);
+// console.log(filtered);
+// console.log(arr);
+
+// Напишіть функцію filterRangeInPlace(arr, a, b), яка приймає масив arr і видаляє з нього всі значення крім тих, які знаходяться між a і b. Тобто, перевірка має вигляд a ≤ arr[i] ≤ b.
+// Функція повинна змінювати поточний масив і нічого не повертати.
+
+// let arr = [5, 3, 8, 1, 0, 0, 1];
+// function filterRangeInPlace (arr, a, b)  {
+//   for (let index = 0; index < arr.length; index++) {
+//     let val = arr[index];
+//     if (a > val || val > b) {
+//       arr.splice(index, 1);
+//       index--;
+//     };    
+//   };
+// };
+// filterRangeInPlace(arr, 0, 4);
+// console.log( arr );
+
+// Сортувати за спаданням
+
+// let arr = [5, 2, 1, -10, 8];
+// arr.sort ((a, b) => (b - a));
+// console.log( arr ); 
+
+// У нас є масив рядків arr. Потрібно отримати відсортовану копію та залишити arr незміненим. Створіть функцію copySorted(arr), яка буде повертати таку копію.
+
+// let arr = ["HTML", "JavaScript", "CSS"];
+// let copySorted = (arr) => {
+//   return arr.map(item => item).sort()
+// };
+// let sorted = copySorted (arr)
+// console.log( sorted ); // CSS, HTML, JavaScript
+// console.log( arr ); // HTML, JavaScript, CSS (без змін)
+
+// По-перше, реалізуйте метод calculate(str), який приймає рядок типу "1 + 2" в форматі «ЧИСЛО оператор ЧИСЛО» (розділені пробілами) і повертає результат. Метод повинен розуміти плюс + і мінус -.
+// Потім додайте метод addMethod(name, func), який додає в калькулятор нові операції. Він приймає оператор name і функцію з двома аргументами func(a, b), яка описує його.
+// Наприклад, давайте додамо множення *, ділення / і зведення в ступінь **
+
+// function Calculator() {
+//   this.metods = {
+//     "+": (a, b) => a + b,
+//     "-": function (a, b) {
+//       return a - b;
+//     },
+//   };
+//   this.calculate = function (string) {
+//     let str = string.split(" "),
+//     a = +str[0],
+//     b = +str[2],
+//     operator = str[1];
+//     return (!(operator in this.metods) || isNaN (a) || isNaN (b)) ?
+//       "Alert" :
+//       this.metods[operator](a, b);
+//   };
+//   this.addMethod = (name1, func) => {
+//     this.metods[name1] = func;
+//   };
+// };
+// // let calc = new Calculator;
+// // console.log( calc.calculate("3 + 7") );
+// let powerCalc = new Calculator;
+// powerCalc.addMethod("*", (a, b) => a * b);
+// powerCalc.addMethod("/", (a, b) => a / b);
+// powerCalc.addMethod("**", (a, b) => a ** b);
+// let result = powerCalc.calculate("5 + 8");
+// console.log(result);
+// console.log(powerCalc);
+
+// У вас є масив об’єктів user, і в кожному з них є user.name. Напишіть код, який перетворює їх в масив імен.
+
+// let ivan = { name: "Іван", age: 25 };
+// let petro = { name: "Петро", age: 30 };
+// let mariya = { name: "Марія", age: 28 };
+// let users = [ ivan, petro, mariya ];
+// let names = users.map( elem => {
+//   return elem = elem.name ;
+//   }  
+// );
+// console.log( names ); // Іван, Петро, Марія
+
+// У вас є масив обʼєктів user, і у кожного з обʼєктів є name, surname та id. Напишіть код, який створить ще один масив обʼєктів з параметрами id й fullName, де fullName – складається з name та surname.
+
+// let ivan = { name: "Іван", surname: "Іванко", id: 1 };
+// let petro = { name: "Петро", surname: "Петренко", id: 2 };
+// let mariya = { name: "Марія", surname: "Мрійко", id: 3 };
+// let users = [ ivan, petro, mariya ];
+// let usersMapped = users.map (item => {
+//   const arr = {};
+//   arr.fullName = item.name + " " + item.surname,
+//   arr.id = item.id;
+//   return arr;
+// });
+// usersMapped[0].fullName = "Vasja"
+// console.log( usersMapped[0].id ) // 1
+// console.log( usersMapped[0].fullName ) // Іван Іванко
+
+// Напишіть функцію sortByAge(users), яка приймає масив обʼєктів з властивістю age і сортує їх по ньому.
+
+// let ivan = { name: "Іван", age: 25 };
+// let petro = { name: "Петро", age: 30 };
+// let mariya = { name: "Марія", age: 28 };
+// let arr = [ petro, ivan, mariya ];
+// function sortByAge(arr) {
+//   arr.sort((a, b) => (a.age - b.age) 
+// )}
+// sortByAge(arr)
+// // now: [ivan, mariya, petro]
+// console.log(arr[0].name); // Іван
+// console.log(arr[1].name); // Марія
+// console.log(arr[2].name); // Петро
+
+// Напишіть функцію shuffle(array), яка перемішує (випадковим чином переставляє) елементи масиву.
+
+// let arr = [1, 2, 3, 4];
+// function shuffle(arr) {
+//   const one = {};
+//   arr.forEach(( item ) => {
+//     one[Math.round(100000000 * Math.random())] = item;
+//   });
+//   arr.length = 0;
+//   for (let key in one) {
+//     arr.push (one[key])
+//   }
+// };
+// shuffle(arr);
+// console.log(arr);
+
+// Напишіть функцію getAverageAge(users), яка приймає масив об’єктів з властивістю age та повертає середній вік.
+
+// let john = { name: "John", age: 25 };
+// let pete = { name: "Pete", age: 30 };
+// let mary = { name: "Mary", age: 29 };
+// let arr = [ john, pete, mary ];
+// let getAverageAge = (users) => {
+//   return users.reduce((sum, item) =>  sum + item.age , 0) / users.length;
+// }
+// console.log( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+
+// Нехай arr – масив рядків. Напишіть функцію unique(arr), яка повертає масив, що містить тільки унікальні елементи arr.
+
+// function unique(arr) {
+//   for (let index = 0; index < arr.length; index++) {
+//     if( arr.indexOf( arr[index], (index + 1) ) > -1) {
+//       arr.splice( index, 1 )
+//       index--;
+//     };
+//   };
+//   return arr;
+// };
+// let strings = ["Привіт", "Світ", "Привіт", "Світ",
+//   "Привіт", "Привіт", "Світ", "Світ", ":-O"
+// ];
+// console.log( unique(strings) ); // Привіт, Світ, :-O
+
+// Припустимо, ми отримали масив користувачів у вигляді {id:..., name:..., age:...}. Створіть функцію groupById(arr), яка створює з масиву об’єкт із ключом id та елементами масиву як значеннями.
+
+// let users = [
+//   {id: 'іван', name: "Іван Іванко", age: 20},
+//   {id: 'ганна', name: "Ганна Іванко", age: 24},
+//   {id: 'петро', name: "Петро Петренко", age: 31},
+// ];
+// function groupById( arr ) {
+//   const newObj = {};
+//   arr.reduce((nothing, item) => {
+//     newObj[item.id] = item;
+//   }, {});
+//   return newObj;
+// };
+// let usersById = groupById(users);
+// console.log(usersById);
+
+// Нехай arr – це масив.Потрібно створити функцію unique(arr), яка повинна повертати масив унікальних елементів arr
+
+// function unique(arr) {
+//   // return (Array.from( new Set (arr)));
+//   return ([... new Set (arr)]);
+// }
+// let values = ["Hare", "Krishna", "Hare", "Krishna",
+//   "Krishna", "Krishna", "Hare", "Hare", {name : ":-O"}
+// ];
+// console.log( unique(values) ); // Hare, Krishna, :-O
+
+// Анаграми – це слова, у яких ті ж букви в тій же кількості, але вони розташовуються в іншому порядку. Напишіть функцію aclean(arr), яка повертає масив без анаграм.
+
+// function aclean(arr) {
+//   let map = new Map();
+//   for (let word of arr) {
+//     // розділіть слово на літери, відсортуйте їх та знову з'єднайте
+//     let sorted = word.toLowerCase().split('').sort().join(''); // (*)
+//     map.set(sorted, word);
+//   }
+//   return Array.from(map.values());
+// }
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// console.log( aclean(arr) );
+
+// Ми хотіли б отримати масив ключів map.keys() в змінну і далі працювати з ними, наприклад, застосувати метод .push
+
+
+
+let map = new Map();
+map.set("name", "John");
+
+let keys = map.keys();
+
+// Помилка: keys.push -- це не функція
+// keys.push("more");
+keys = Array.from(keys)
+keys.push('more')
+
+// console.log(map);
+console.log(keys);
