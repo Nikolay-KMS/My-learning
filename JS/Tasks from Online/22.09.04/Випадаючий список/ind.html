@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style> 
+  html {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    font-family: serif;
+    font-size: 14px;
+    height: 100%;
+  }
+  nav {
+    display: flex;
+    padding: 18px;
+    background-color: #050532;
+    align-items: center;
+  }
+  nav a {
+    padding: 0 20px;
+    text-decoration: none;
+    color: #fff;
+  }
+  nav a:hover {
+    color: rgb(226,165, 144)
+  }
+  nav .active {
+    background: #e04343;
+    color: #38ffac;
+  }
+  .dropdown {
+    position: relative;
+  }
+  .sublist {
+    width: 150px;
+    list-style: none;
+    position: absolute;
+    padding: 0;
+    display: none;
+    background-color: #050532;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 15);
+    left: 20px;
+    top: 17px;
+    border-radius: 4px;
+  }
+  .sublist a {
+    display: inline-flex;
+    padding: 5px 18px;
+  }
+  .dropdown a.active + .sublist {
+    display: block;
+  }
+
+  </style>  
+  </head>
+  <body>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Products</a>
+  <a href="#">Services</a>
+  <a href="#">Policy</a>
+  <div class="dropdown">
+    <a href="#">About us &bigtriangledown;</a>
+    <ul class="sublist">
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Contacts</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Subscribe!</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <script src="ind.js"></script>
+</body>
+</html>
