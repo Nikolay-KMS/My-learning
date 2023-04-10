@@ -37,19 +37,11 @@ form.addEventListener('click', (event) => {            // встановлюєм
   };
 });
 
-let errorFlag = false;                                 // мітка для доп. перевірки
-button.addEventListener('click', () => {               // встановлюємо прослуховування Сабміссіва
-  if( inputEnter.value === inputConfirm.value ) {         // якщо значення рівні
+button.addEventListener('click', () => { 
+  if(inputEnter.value === inputConfirm.value ) {
+    document.querySelector('.error').innerText ='';
     console.log('You are welcome');
-    if( errorFlag === true ) {                                 // доп. перевірка; якщо флаг Еррор вже є, то його треба прибрати
-      document.querySelector('.error').remove();
-    }
-  } else {                                                  // якщо значення не рівні
-    let p = document.createElement('p');
-    p.innerText = 'You need to enter the same values!'
-    inputConfirm.after(p);
-    p.classList.add('error');
-    errorFlag = true;
-  };  
-  // event.preventDefault();
+  } else {
+    document.querySelector('.error').innerText ='You need to enter the same values!';
+  }
 });
