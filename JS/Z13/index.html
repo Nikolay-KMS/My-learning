@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./css/reset-sample.css">
+    <link rel="stylesheet" href="./css/style.css"> -->
+    <title>Document</title>
+
+    <style>
+        .image-to-show {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+            transition: all 0.5s;
+            position: absolute;
+        }
+
+        .images-wrapper {
+            /* display: none; */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            justify-content: center;
+            height: 400px;
+            }
+        .visible {
+            opacity: 1;
+        }
+        button, .timerBox {
+            margin: 20px 15px;
+            padding: 15px 25px;           
+        }
+        .footer {
+            margin: 0 auto;
+            width: 400px;
+            display: flex;
+            justify-content: center;
+            justify-content: space-between; 
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="images-wrapper">
+        <img src="pict/1.jpg" alt="image of game" class="image-to-show" />
+        <img src="pict/2.jpg" alt="image of game" class="image-to-show" />
+        <img src="pict/3.jpg" alt="image of game" class="image-to-show" />
+        <img src="pict/4.jpg" alt="image of game" class="image-to-show" />
+    </div>
+    <div class="footer">
+        <button class="stop">  Stop  </button>
+        <button class="start">Start</button>
+        <div class="timerBox"></div>
+    </div>
+
+    <script src="Z13.js"></script>
+</body>
+
+</html>

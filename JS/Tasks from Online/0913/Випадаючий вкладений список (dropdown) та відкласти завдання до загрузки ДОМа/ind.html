@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    .starter {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .starter::before {
+      content: ' ';
+      position: fixed;
+      width: 80px;
+      height: 80px;
+      top: calc( 50% - 45px );
+      left: calc( 50% - 45px );
+      border: 10px solid rgb(250, 114, 51);
+      border-radius: 50%;
+      border-bottom-color: transparent;
+      transform: rotate(0deg);
+      animation: 1s linear infinite rotating;
+    }
+    @keyframes rotating {
+      0%  { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+    
+
+
+  </style>
+
+</head>
+
+<body>
+<script>
+  // document.addEventListener('readystatechange', () => {
+  //   if( document.readyState ===  'complete') {
+  //     document.querySelector('.starter').hidden = true;
+  //   }
+  // })
+  window.onload = () => {
+    document.querySelector('.starter').hidden = true;
+  }
+
+</script>
+<ul class="tree">
+  <li>Тварини
+    <ul>
+      <li >Ссавці
+        <ul >
+          <li>Корови</li>
+          <li>Віслюки</li>
+          <li>Собаки</li>
+          <li>Тигри</li>
+        </ul>
+      </li>
+      <li>Інші
+        <ul>
+          <li>Змії</li>
+          <li>Птиці</li>
+          <li>Ящірки</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Риби
+    <ul>
+      <li>Акваріумні
+        <ul>
+          <li>Гуппі</li>
+          <li>Скалірії</li>
+        </ul>
+      </li>
+      <li>Морскі
+        <ul>
+          <li>Морська форель</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div>
+  <img src="https://img2.reactor.cc/pics/post/Kerbal-Space-Program-%D1%80%D0%B0%D0%B7%D0%BD%D0%BE%D0%B5-KSP-Gif-%D0%B4%D0%BB%D0%B8%D0%BD%D0%BD%D0%B0%D1%8F-%D0%B3%D0%B8%D1%84%D0%BA%D0%B0-2095986.gif">
+</div>
+
+<div class="starter">
+</div>
+
+  <script src="ind.js"> </script>
+</body>
+
+</html>
