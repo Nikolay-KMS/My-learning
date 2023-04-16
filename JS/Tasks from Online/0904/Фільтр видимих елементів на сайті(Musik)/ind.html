@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style> 
+    form {
+      margin-bottom: 2rem;
+    }
+    #bands {
+      width: 350px;
+      margin-bottom: 2rem;
+    }
+    #bands span {
+      border: 1px solid #ccc;
+      margin: 0 3px;
+      display: inline-block;
+      padding: 3px 10px;
+    }
+    /* .hidden {
+      display: none;
+    } */
+    .hidden {
+      display: none !important;
+    }
+  </style>  
+  </head>
+  <body>
+    <form name="musikFilters">
+      <label>
+        <input type="checkbox" name="rock" checked>
+        Rock
+      </label>
+      <label>
+        <input type="checkbox" name="pop" checked>
+        Pop
+      </label>
+      <label>
+        <input type="checkbox" name="jazz" checked>
+        Jazz
+      </label>
+    </form>
+    
+    <div id="bands">
+      <span data-type="rock">AC/DC</span>
+      <span data-type="rock">Scorpions</span>
+      <span data-type="rock">Offspring</span>
+      <span data-type="rock">Accept</span>
+      <span data-type="rock">Queen</span>
+      <span data-type="pop">Madonna</span>
+      <span data-type="pop">Apice Girls</span>
+      <span data-type="pop">U2</span>
+      <span data-type="pop">Backstreet Boys</span>
+      <span data-type="jazz">Armstrong</span>
+      <span data-type="jazz">Davis</span>
+      <span data-type="jazz">Cortran</span>
+      <span data-type="jazz">Lloyd</span>
+    </div>
+
+    <button onclick="filter()">Filter</button>
+
+  <script src="ind.js"></script>
+</body>
+</html>

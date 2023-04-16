@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+p {
+  margin: 0;
+}
+.body { 
+  padding-top: 46px;
+  margin: auto;
+  max-width: 1366px;
+  /* height: 768px; */
+  background: url(picture/background.png);
+  background-repeat: no-repeat;
+  /* background-origin:border-box; */
+  background-size: cover;
+}
+.conteiner { 
+  color: #fff;
+  max-width: 1025px;
+  margin-left: 165px;
+  /* margin: auto; */
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 18px;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 0 17px 0;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.logo-left { 
+  display: flex;
+}
+.logo { 
+  margin-right: 8px;
+  width: 53px; 
+  height: 47px;
+  background: #fff;
+  -webkit-mask-image: url(picture/logo.svg);
+}
+.logo-title-big:first-child { 
+  font-size: 29px;
+  line-height: 29px;
+}
+.contakt-right { 
+  text-align: end;
+}
+.contakt-right a { 
+  display: block;
+}
+.e-mail { 
+  padding-bottom: 1px;
+  margin-bottom: 19px;
+}
+.tel { 
+  padding-bottom: 3px;
+}
+.content { 
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.content-div-item {
+  padding-bottom: 37px;
+}
+.content-item {
+  position: relative; 
+}
+.content-item:hover .active-window { 
+  opacity: 1;
+  /* transition: 1s; */
+  transition: 1s ease-out;
+  margin-top: 0px;
+}
+.content-item-picture { 
+  max-width: 300px;
+  max-height: 220px;
+}
+.content-subscription { 
+  padding: 1.5px 0;
+  margin: 20px 0 0px 0;
+  text-align: center;
+}
+
+.footer {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  text-align: center;
+  margin: 49px 0 15px 0;;
+}
+a:hover {
+  color: #F26522;
+}
+.logo:hover {
+  background-color: #F26522;
+}
+.content-item-box {
+  overflow: hidden;
+  position: relative;
+}
+
+.active-window {
+  width: 300px;
+  height: 55px;
+  background: #F26522;
+  position: absolute;
+  top: 165px;
+  color: #fff;
+  padding: 7px 16px 12px 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+  opacity: 0;
+  margin-top: 55px;
+}
+.active-window-item-1 {
+  font-size: 10px;
+  width: 100%;
+}
+.active-window-item-2 {
+  font-size: 20px;
+}
+.active-window-item-3 {
+  font-size: 14px;
+  line-height: 14px;
+  position: relative;
+  padding-right: 21px;
+}
+.active-window-item-3::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content:"";
+  width: 7px;
+  height: 12px;
+  background-image: url(picture/Vector.svg);
+}
+

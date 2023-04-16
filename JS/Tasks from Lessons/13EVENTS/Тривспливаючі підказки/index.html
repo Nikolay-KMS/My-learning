@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+  body {
+    height: 2000px;
+  }
+  .tooltip {
+    position: fixed;
+    background: rgb(250, 172, 136);
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  #house {
+    background: #929292;
+    width: 200px;
+    /* height: 200px; */
+    margin-top: 50px;
+    overflow: hidden;
+  }
+
+  #roof {
+    border-bottom: 20px solid #b60707;
+    border-left: 100px solid #fff;
+    border-right: 100px solid #fff;
+
+  }
+  </style>
+</head>
+<body>
+
+  <div data-tooltip="Here – is the house interior" id="house">
+
+    <div data-tooltip="Here – is the roof" id="roof"> 
+    </div>
+    Some text <br>
+    Some text <br>
+    Some text <br>
+    Some text <br>
+    Some text <br>
+    Some text <br>
+    Some text <br> <br> 
+    <a href="#" data-tooltip="Read on…">Hover over me</a>
+  </div>
+  <script src="ind.js"></script>
+</body>
+</html>
