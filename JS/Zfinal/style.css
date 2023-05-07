@@ -9,6 +9,7 @@ margin: 0;
 }
 .main {
   background-image: url(pic1/bg.png);
+  background-attachment:fixed;
   height: 1012px;
 }
 .nav {
@@ -287,17 +288,14 @@ margin: 95px 0 47px;
   align-items: center;
   text-align: center;
   cursor: pointer;
-  padding: 0 15px;
-  border-top: 1px solid rgba(218, 218, 218, 1);
-  border-bottom: 1px solid rgba(218, 218, 218, 1);
-  border-right: 1px solid rgba(218, 218, 218, 1);
+  padding: 0 14px;
+  border: 1px solid rgba(218, 218, 218, 1);
 }
 .our-amazing-work li:first-child {
   padding: 0 27px;
-  border-left: 1px solid rgba(218, 218, 218, 1);
 }
 .our-amazing-work li.active {
-  border: 2px solid rgba(24, 207, 171, 1);
+  border: 1px solid rgba(24, 207, 171, 1);
 }
 .our-amazing-work .pictures {
   width: 1140px;
@@ -441,7 +439,7 @@ margin: 95px 0 47px;
 }
 .testimonial {
   height: 853px;
-  background-image: url(/JS/Zfinal/pic4/bg\ .png);
+  background-image: url(pic4/bg\ .png);
 }
 .testimonial .header {
   margin: 0 auto;
@@ -481,7 +479,7 @@ margin: 95px 0 47px;
   line-height: 22px;
 }
 .testimonial .content::before{
-  content: url(/JS/Zfinal/pic4/Combined\ shape\ 2474.svg);
+  content: url(pic4/Combined\ shape\ 2474.svg);
   position: absolute;
   top: -71px;
   left: 556px;

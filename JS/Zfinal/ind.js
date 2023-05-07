@@ -12,46 +12,62 @@ document.querySelector('.our-services ul').addEventListener('click', (event) => 
   });
 });
 
-let loadImgStart = 12;
-let arrImg = document.querySelectorAll('.our-amazing-work .pictures > img');
+let loadImgStart = 12;                                           
+let arrImg = document.querySelectorAll('.our-amazing-work .pictures > img');                           // масив картинок
+arrImg.forEach((elem, index) => (index >= loadImgStart) ? elem.style.display = 'none': false);            // ховаю картинки після 12-ї
 document.querySelector('.our-amazing-work button')
 .addEventListener('click', showImg);
 
-arrImg.forEach((elem, index) => (index >= loadImgStart) ? elem.style.display = 'none': false);
-
-function showImg() {
-  setTimeout(showAmazingWorkImg, 2000);
+function showImg() {  
+  setTimeout(showAmazingWorkImg, 1000);                          // затримка
   let div = document.createElement('div');
   div.classList.add('waiting');
-  document.querySelector('.our-amazing-work button').after(div); 
+  document.querySelector('.our-amazing-work button').after(div);                     // на час затримка ставлю знак завантаження                
   document.querySelector('.our-amazing-work button').style.display = 'none'; 
-}
+};
 
 function showAmazingWorkImg() {
   document.querySelector('.our-amazing-work .waiting').remove();  
-  arrImg.forEach((elem, index) => {
-    if( index >= loadImgStart ) {
-      elem.style.display = '';
+  let active = document.querySelector('.our-amazing-work li.active');
+  if(active.dataset.sort === "All") {                                                 // якщо нажали на Олл
+    document.querySelectorAll('.our-amazing-work li').forEach(el => {
+      el.dataset.showed = '24';                                                       // всім кнопкам добавляю
+      for (let index = loadImgStart; index < arrImg.length; index++) {
+          arrImg[index].style.display = '';                                        // та відкриваю всі картинки після 12-ї
+        };
+    });
+  } else {                                                 // інакше добавляю тільки активній кнопці
+      active.dataset.showed = '24';    
+  };
+  for (let index = loadImgStart; index < arrImg.length; index++) {
+    if( arrImg[index].dataset.sort === active.dataset.sort ) {
+      arrImg[index].style.display = '';                    // та відкриваю всі картинки після 12-ї,що співпадають з фільтром 
     };
-  });
+  };
 };
 
 document.querySelector('.our-amazing-work ul').addEventListener('click', filterImg );
 function filterImg() {
-  if( !event.target.closest('li')) return;                    // якщо жмакнули не Лі - на тапки
-  if( event.target.innerText === "All" ) {                   // якщо жмакнули Олл, всі відкриваю
-    arrImg.forEach( elem => elem.hidden = false);  
-    } else {
-      arrImg.forEach( elem => {
-        elem.dataset.sort === event.target.innerText ? elem.hidden = false : elem.hidden = true;
-      });                   // у кого Датасет співпадаю з текстом, відкриваю, інакше скриваю
-    };
+  if( !event.target.closest('li')) return;                    // якщо жмакнули не Лі - на тапки    
+  document.querySelector('.our-amazing-work .active').classList.remove('active');
+  event.target.classList.add('active');  
+  if(event.target.dataset.showed === '24') {                       // показані всі картинки, то Батон ховаю
+    document.querySelector('.our-amazing-work button').style.display = 'none'; 
+  } else {
+    document.querySelector('.our-amazing-work button').style.display = ''; 
+  }
+  // console.log( 'Graphic Design' == "*" );
+  if(event.target.dataset.sort === "All") {                  // якщо жмакнули Олл, всі відкриваю
+    arrImg.forEach( elem => {
+      elem.hidden = false;
+    }); 
+  } else {
+    arrImg.forEach( elem => {
+      elem.dataset.sort === event.target.dataset.sort ? elem.hidden = false : elem.hidden = true;
+    });                            // у кого Датасет співпадаю з текстом, відкриваю, інакше скриваю
+  }
 };
 
-document.querySelector('.our-amazing-work ul').addEventListener('click', (event) => {           // вішаю собитие на кнопки
-  document.querySelector('.our-amazing-work .active').classList.remove('active');
-  event.target.classList.add('active');
-});
 
 let hiddenImg = false;                                                  // флаг
 const cover = document.querySelector('.our-amazing-work .cover');
@@ -138,4 +154,3 @@ function showMoreGalleryImgTimer() {
     document.querySelector('.gallery-of-best-images .waiting').remove();                               //  удаляю знак загрузки
   masonryGallery();                                                  //  перезапуск Масонри
 };
-
