@@ -1,0 +1,23 @@
+{
+  "name": "z2y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp clean & gulp sass & gulp clone & concurrently \"http-server dist -c-1\" \"gulp watch\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^5.1.0",
+    "http-server": "^14.1.1",
+    "sass": "^1.62.1"
+  }
+}
