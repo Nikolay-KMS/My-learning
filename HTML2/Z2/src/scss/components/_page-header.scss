@@ -1,0 +1,134 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+p {
+  margin: 0;
+}
+h3 {
+  margin: 0;
+}
+.container {
+  margin: 0 28px 0 25px;
+  // margin: 0 auto;
+  max-width: 1170px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu {
+  position:relative;
+
+  &__icon {
+    width: 44px;
+    height: 37px;
+    background-color:#000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    left: calc(100% - 44px);
+    margin-top: 23px;
+
+    .icon__line {
+      width: 17px;
+      height: 2px;
+      background-color: #fff;
+    }
+    &::before {
+      content: "";
+      width: 17px;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      left: 13.5px;
+      top: 13px;
+    }
+    &::after {
+      content: "";
+      width: 17px;
+      height: 2px;
+      background-color: #fff;
+      position: absolute;
+      left: 13.5px;
+      bottom: 12px;
+    }
+  }
+  &__list {
+    position: absolute;
+    left: calc(100% - 182px);
+    background-color: $menu-font;
+    display: flex;
+    flex-direction: column;
+    gap: 2px; 
+  }
+  &__item {
+    height: 28px;
+    max-width: 182px;
+    color: $main-font;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 1.1px;
+    padding-left: 12px;
+    box-sizing: border-box;
+    &:hover {
+      color: $hover;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .menu__list .active-class {
+    background-color: $active-menu-class;
+    &:hover {
+      color: $main-font;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-left:80px;
+    margin-right: 92px;
+  }
+  .menu {    
+    &__icon {
+      display: none;
+    }
+    &__list {
+      position: static;
+      left: 0;
+      background-color: #fff ;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 609px;
+      margin: 0 auto;
+      margin-top: 41px;
+      margin-bottom: 20px;
+    }
+    &__item {
+      height: fit-content;
+      width: fit-content;
+      padding: 0;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    margin: 0 auto;
+    max-width: 1170px;
+  }
+  .menu {    
+
+    &__list {
+      margin-top: 45px;
+      margin-bottom: 28px;
+      max-width: 812px;
+    }
+  }
+}
