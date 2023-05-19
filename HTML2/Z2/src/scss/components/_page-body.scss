@@ -2,13 +2,15 @@
 .main-icon {
   &__img {
     width: 100%;
-    margin: 23px 0 30px;      
+    margin: 23px 0 30px;    
+
   }
 }
 .posts {
   margin-bottom: 39px;
   &__item {
     margin-top: 23px;
+    
   }
   &__title {
     color: $main-font;
