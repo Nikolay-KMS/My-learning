@@ -15,7 +15,7 @@ const paths = {
     dest: './dist'    
   },
   scripts: {
-    src: (['./src/**/index.js', './src/**/file1.js']),
+    src: (['src/js/menu.js', './src/**/file1.js']),
     dest: './dist/js'
   },
   img: {
@@ -35,10 +35,10 @@ function cleanAll() {
 function styles() {
   return gulp.src(paths.styles.src)
     .pipe(sass())
-    // .pipe(autoprefixer({
-    //   cascade: false
-    // }))
-    // .pipe(cleanCSS())
+    .pipe(autoprefixer({
+      cascade: false
+    }))
+    .pipe(cleanCSS())
     .pipe(rename({
       basename: 'style',
       suffix:'.min'
@@ -84,13 +84,9 @@ function serverRun() {
 gulp.task('build', gulp.series(cleanAll, gulp.parallel(styles, scripts, img, cloneHtml)))
 gulp.task('dev', gulp.parallel (serverRun, watchAll))
 
-// gulp.task('styles', styles)
-// gulp.task('watch', watch)
-gulp.task('clean', cleanAll)
-// gulp.task('default', gulp.series(styles, watchAll))
-// gulp.task('default', gulp.series(gulp.parallel(watch, cloneHtml)), ['serve'] )
-gulp.task('create', gulp.parallel (cloneHtml, styles, scripts, img));
-gulp.task('default', gulp.parallel (serverRun, watchAll));
+// gulp.task('clean', cleanAll)
+// gulp.task('create', gulp.parallel (cloneHtml, styles, scripts, img));
+// gulp.task('default', gulp.parallel (serverRun, watchAll));
 
 
 
