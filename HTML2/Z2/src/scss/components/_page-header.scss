@@ -12,11 +12,13 @@ h3 {
   margin: 0 28px 0 25px;
   // margin: 0 auto;
   max-width: 1170px;
-  transition: all 0.3s ease-in-out;
+  // transition: all 0.3s ease-in-out;
 }
 
 .menu {
   position:relative;
+  transition: all 0.3s ease-in-out;
+
 
   &__icon {
     width: 44px;
@@ -63,7 +65,7 @@ h3 {
   }
   &__item {
     height: 28px;
-    max-width: 182px;
+    width: 182px;
     color: $main-font;
     display: flex;
     align-items: flex-end;
@@ -110,6 +112,8 @@ h3 {
       margin: 0 auto;
       margin-top: 41px;
       margin-bottom: 20px;
+      transition: all 0.3s ease-in-out;
+
     }
     &__item {
       height: fit-content;
