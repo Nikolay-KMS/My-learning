@@ -1,11 +1,8 @@
 
-<!-- Команди: -->
+Команди:
 
-<!-- встановити всі пакети npn -->
-npn i
+npn i  - встановити всі пакети npn -
 
-<!-- видаляє папку dist, потім копіює тути скомпільовані (включає: cleanAll, styles, scripts, img, cloneHtml) -->
-gulp build
+gulp build   - видаляє папку dist, потім копіює тути скомпільовані (включає: cleanAll, styles, scripts, img, cloneHtml) -
 
-<!-- запускає сервер та відстежує зміни (включає:serverRun, watchAll) -->
-gulp dev
+gulp dev   - запускає сервер та відстежує зміни (включає:serverRun, watchAll) -
