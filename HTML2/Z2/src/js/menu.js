@@ -6,9 +6,9 @@ const menu = document.querySelector('.menu__list');
 icon.addEventListener('click', showMenu);
 function showMenu() {
   if(icon.classList.contains('active')) {
-    icon.classList.remove('active')
+    icon.classList.remove('active');
   } else {    
-    icon.classList.add('active')
+    icon.classList.add('active');
   };
 };
 
