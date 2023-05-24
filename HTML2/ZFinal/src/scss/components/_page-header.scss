@@ -17,16 +17,29 @@
     
       &-logo {
         @include flex-row-spaceBetw-center;
+
         &__icon {
-          @include flex-row-spaceBetw-center
+          fill: $main-font;          
+          width: 43px;
+          height: 41px; 
+          @include flex-row-spaceBetw-center;
+
+          &:hover {
+            fill: #fff;
+            cursor: pointer;
+          }
         }
-        &__title h1{
+        &__title h1{          
           margin-left: 17px;
           font-family: Lato;
           font-size: 24px;
           font-weight: 700;
           line-height: 16px;          
           text-transform: uppercase;
+          &:hover {
+            color: $white-font;
+            cursor: pointer;
+          }
         }
       }
       &-buttons {
@@ -35,16 +48,26 @@
         &__item {
           font-weight: 700;
           line-height: 17px;
-
+          
           & a {
             color: $main-font;
+            &:hover {
+              color: $white-font;
+              cursor: pointer;
+            }
           }
           &.button {
             margin-left: 48px;
             background-color: $main-color;
             width: 145px;
             height: 37px;
-            border-radius: 40px
+            border-radius: 40px;
+
+            &:hover {
+              color: $main-font;
+              background: $white-font;
+              cursor: pointer;
+            }
           }
         }
         &__list {
@@ -58,6 +81,10 @@
     margin-top: 83px;
     font-size: 82px;
     line-height: 77px;
+    &:hover {
+      color: $white-font;
+      cursor: pointer;
+    }
   }
   &__feature {
     margin-top: 19px;
@@ -84,5 +111,10 @@
     font-size: 21px;
     font-weight: 700;
     line-height: 22px;
+    &:hover {
+      color: $main-font;
+      background-color: $white-font;
+      cursor: pointer;
+    }
   }
 }
