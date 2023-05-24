@@ -1,16 +1,4 @@
 
-body {
-  font-size: 16px;
-  font-weight: 700;
-  // font-family: 'Roboto', sans-serif;
-  // margin: 0 auto;
-}
-.container {
-  margin: 0 auto;
-  max-width: 1200px;
-  // transition: all 0.3s ease-in-out;
-}
-
 .menu {
 
   &-wrapper {
@@ -44,8 +32,6 @@ body {
         @include flex-row-spaceBetw-center;
         
         &__item {
-          font-family: Montserrat;
-          font-size: 16px;
           font-weight: 700;
           line-height: 17px;
 
@@ -54,7 +40,6 @@ body {
           }
           &.button {
             margin-left: 48px;
-            color: $white-font;
             background-color: $main-color;
             width: 145px;
             height: 37px;
@@ -70,10 +55,8 @@ body {
   }
   &__title {
     margin-top: 83px;
-    font-family: Montserrat;
     font-size: 82px;
     line-height: 77px;
-    color: $white-font;    
   }
   &__feature {
     margin-top: 19px;
@@ -84,7 +67,6 @@ body {
   }
   &__version {
     margin-top: 19px;
-    font-family: Montserrat;
     font-weight: 400;
     line-height: 15px;
     color: #848E97;
@@ -98,8 +80,6 @@ body {
     background-color: $main-fon;
     border-radius: 31px;
     border: 0;
-    color: $white-font;
-    font-family: Montserrat;
     font-size: 21px;
     font-weight: 700;
     line-height: 22px;
