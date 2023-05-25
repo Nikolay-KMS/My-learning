@@ -17,6 +17,7 @@
     
       &-logo {
         @include flex-row-spaceBetw-center;
+        width: 100%;
 
         &__icon {
           fill: $main-font;          
@@ -42,7 +43,7 @@
           }
         }
       }
-      &-buttons {
+      &-links {
         @include flex-row-spaceBetw-center;
         
         &__item {
@@ -56,7 +57,7 @@
               cursor: pointer;
             }
           }
-          &.button {
+          & button {
             margin-left: 48px;
             background-color: $main-color;
             width: 145px;
@@ -120,12 +121,31 @@
   }
 }
 
-@media (max-width: 992px) {
-  .navbar {
+@media (min-width: 993px) {
+  .menu-wrapper .navbar-links__item {
+    order: 1;    
+  }
+}
 
-    &-buttons {
+@media (max-width: 992px) {
+  .menu-wrapper .navbar {
+    min-height: 118px;
+
+    &-logo {
+      flex-wrap: wrap;
+
+    }
+    // &-links {
+    //   flex-direction: column;
+    // }
+    &-links__item.button {
+      flex-basis: calc(-152px + 100%);
+      flex-wrap: wrap;
       display: flex;
-      flex-direction: column;
+      justify-content: flex-end;
+      & button {
+        margin: 0;
+      }
     }
   }
 }
