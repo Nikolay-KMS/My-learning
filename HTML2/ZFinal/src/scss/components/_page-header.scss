@@ -62,6 +62,7 @@
             width: 145px;
             height: 37px;
             border-radius: 40px;
+            border: 0;
 
             &:hover {
               color: $main-font;
@@ -115,6 +116,16 @@
       color: $main-font;
       background-color: $white-font;
       cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar {
+
+    &-buttons {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
