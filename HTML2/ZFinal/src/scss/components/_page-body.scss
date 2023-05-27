@@ -16,6 +16,7 @@
   }
   &__items {
     @include flex-row-spaceBetw-center;
+    // justify-content: center;
     flex-wrap: wrap;
     margin-top: 83px;
     row-gap: 85px;
@@ -23,7 +24,7 @@
 
   }
   &__item {
-    width: calc(-123px*2/3 + 33.33%);
+    max-width: calc(-123px*2/3 + 33.33%);
     min-height: 123px;
     @include flex-column-spaceBetw;
     gap: 23px;
@@ -40,9 +41,21 @@
     margin-top: 105px; 
     font-size: 14px;
     font-weight: 400;
-    line-height: 21px;  
+    line-height: 17.5px;  
     color: #A291A5;  
     max-width: 887px;
+    position: relative;
+
+    &::after {
+      content:'';
+      width: 88%;
+      height: 2px;
+      background-color: #645766;
+      bottom: - 18.5px;
+      display: block;
+      margin: 0 auto;
+      transform: translateY(18.5px);
+    }
   }
 }
 
@@ -56,17 +69,6 @@
     padding-top: 132px;
     font-size: 48px;
     line-height: 46px;
-    position: relative;
-
-    &::before {
-      content:'';
-      width: 780px;
-      height: 2px;
-      background-color: #645766;
-      position: absolute;
-      top: 18.5px;
-      left: 210px;
-    }
   }  
   &-items {
     margin-top: 55px;
@@ -87,7 +89,6 @@
         min-height: 97px;
         @include flex-row-center-center;
         text-transform: uppercase;
-
       }
       &__price {
         font-family: Montserrat;
@@ -195,15 +196,26 @@
       line-height: 41px;
     }
     &__items {
+      // width: 100%;
       margin-top: 88px; 
-      column-gap: 80px;   
+      // column-gap: 80px;   
+      column-gap: 5%; 
+      // column-gap: 10px;  
       row-gap: 56px;
     }
     &__item {
-      width: calc(-57px + 50%);
+      // max-width: calc(-17px + 50%);
+      max-width: 47.5%;
+
     }
     &-feature {
       margin-top: 67px; 
+      margin-right: 22px;
+      margin-left: 22px;
+
+      &::after {
+        width: 78%;
+      }
     }
   }
   .price {
@@ -212,9 +224,6 @@
       padding-top: 109.5px;
       font-size: 42px;
       line-height: 41px;
-      &::before {
-        content: none;
-      }
     }
     &-wrap {
       margin: 0 auto;
@@ -238,8 +247,9 @@
 @media (max-width: 631px) {
   .price-items {
     max-width: 400px;
-    margin: 0;
+    margin: 32px 0 0;
     justify-content: center;
+    gap: 18px;
   }
 }
 
@@ -254,7 +264,7 @@
       margin-top: 53px;
     }
     &__item {
-      width: 100%;
+      max-width: 100%;
     }
     &__text {
       line-height: 21.5px;
@@ -262,6 +272,17 @@
     }
     &-feature {
       margin: 37px 20px 0;
+      &::after {
+        width: 96%;
+        transform: translateY(22px);
+      }
+    }
+  }
+  .price {
+    &-title {
+      padding-top: 38px;
+      font-size: 28px;
+      line-height: 34.5px;
     }
   }
 }

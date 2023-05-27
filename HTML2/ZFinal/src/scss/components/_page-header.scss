@@ -307,4 +307,7 @@
   .navbar__burger {
     display: none;
   }
+  .navbar__burger.active {
+    display: none;
+  }
 }
