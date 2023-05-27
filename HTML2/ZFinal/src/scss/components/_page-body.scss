@@ -16,15 +16,14 @@
   }
   &__items {
     @include flex-row-spaceBetw-center;
-    // justify-content: center;
     flex-wrap: wrap;
     margin-top: 83px;
     row-gap: 85px;
-    column-gap: 90px;
+    column-gap: 70px;
 
   }
   &__item {
-    max-width: calc(-123px*2/3 + 33.33%);
+    width: calc(-110px*2/3 + 33.33%);
     min-height: 123px;
     @include flex-column-spaceBetw;
     gap: 23px;
@@ -145,7 +144,7 @@
   }
 }
 
-.price-items .price-item.active {
+.price-item.active {
   width: 299px;
   background-color: #463048;
   .price-item {
@@ -196,17 +195,12 @@
       line-height: 41px;
     }
     &__items {
-      // width: 100%;
       margin-top: 88px; 
-      // column-gap: 80px;   
       column-gap: 5%; 
-      // column-gap: 10px;  
       row-gap: 56px;
     }
     &__item {
-      // max-width: calc(-17px + 50%);
-      max-width: 47.5%;
-
+      width: 44%;
     }
     &-feature {
       margin-top: 67px; 
@@ -245,11 +239,19 @@
 
 // тут вибачайте, так надо)))
 @media (max-width: 631px) {
-  .price-items {
-    max-width: 400px;
-    margin: 32px 0 0;
-    justify-content: center;
-    gap: 18px;
+  .price {
+    &-items {
+      max-width: 400px;
+      margin: 32px 0 0;
+      justify-content: center;
+      gap: 18px;
+      padding-bottom: 15px;
+    }
+    &-title {
+      padding-top: 38px;
+      font-size: 28px;
+      line-height: 34.5px;
+    }
   }
 }
 
@@ -264,7 +266,7 @@
       margin-top: 53px;
     }
     &__item {
-      max-width: 100%;
+      width: 100%;
     }
     &__text {
       line-height: 21.5px;
@@ -276,13 +278,6 @@
         width: 96%;
         transform: translateY(22px);
       }
-    }
-  }
-  .price {
-    &-title {
-      padding-top: 38px;
-      font-size: 28px;
-      line-height: 34.5px;
     }
   }
 }
