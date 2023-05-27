@@ -205,16 +205,6 @@
   }  
 }  
 
-@media (min-width: 481px) {
-  
-  .navbar__burger {
-    display: none;
-  }
-  .navbar__burger.active {
-    display: none;
-  }
-}
-
 @media (max-width: 480px) {
   .navbar {
     margin: 0 5px;
@@ -312,3 +302,12 @@
   }
 }
 
+@media (min-width: 481px) {
+  
+  .navbar__burger {
+    display: none;
+  }
+  .navbar__burger.active {
+    display: none;
+  }
+}
