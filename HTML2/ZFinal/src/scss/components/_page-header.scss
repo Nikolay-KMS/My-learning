@@ -48,6 +48,26 @@
     @include flex-column-spaceBetw;
     align-items: flex-end;
     cursor: pointer;
+
+    &.active {
+      display: block;
+      width: 23px;
+      height: 23px;
+
+      .burger__line {
+        border-radius: 0;
+        width: 32.5px;     
+        &:nth-child(1) {
+          display: none;
+        }
+        &:nth-child(2) {
+          transform: translateX(-4.75px)translateY(9.75px)rotate(45deg);   
+        }
+        &:nth-child(3) {
+          transform: translateX(-4.75px)translateY(6.75px)rotate(-45deg);   
+        }
+      }
+    }
   }
   &__button {
     margin-left: 48px;
@@ -70,14 +90,11 @@
         
     &__item {
       font-weight: 700;
-      line-height: 17px;
-          
-      & a {
-        color: $main-font;
-        &:hover {
-          color: $white-font;
-          cursor: pointer;
-        }
+      line-height: 17px;          
+      color: $main-font;
+      &:hover {
+        color: $white-font;
+        cursor: pointer;
       }
     }
   } 
@@ -206,18 +223,32 @@
       font-size: 15px;
     }
     &-links-wrap {
-      // display: none;
+      display: none;
       position: absolute; 
       top: 103px;
       margin: 0 5px;
       width: calc(-30px + 100%);
 
+      &.active {
+        display: block;
+      }
     }
     &-links {
       display: block;
       background-color: #3B3B3B;
-      padding-bottom: 3px;
+      padding-bottom: 0.1px;
       width: 100%;
+      position: relative;
+
+      &::after {
+        content: ' ';
+        width: 100%;
+        height: 14px;
+        background-color: #333;
+        position: absolute;
+        bottom: -14px;
+        left: 0;
+      }
 
       &__item {
         height: 88px;
@@ -226,62 +257,24 @@
         @include flex-row-center-center;
         font-size: 26px;
         font-weight: 400;
+        color: $white-font;
+        position: relative;
 
         &:active {
           color: $main-font;
-          &::before {
-            content: ' ';
-            width: 100%;
-            height: 14px;
-            background-color: red;
-            position: absolute;
-            top: 9px;
-            left: 0;
-          }
-        }
-
-        & a {
-          // position: relative;
-          color: $white-font;
-          &:active {
-            color: $main-font;
-            &::before {
-              content: ' ';
-              width: 100%;
-              height: 14px;
-              background-color: red;
-              position: absolute;
-              top: 9px;
-              left: 0;
-            }
-          }
-          &:focus {
-            color: $main-font;
-            &::before {
-              content: ' ';
-              width: 100%;
-              height: 14px;
-              background-color: red;
-              position: absolute;
-              top: 9px;
-              left: 0;
-            }
-          }
-        }
-
-        &:last-child {
-          position: relative;
-
-          &::after {
-            content: ' ';
-            width: 100%;
-            height: 14px;
-            background-color: #333;
-            position: absolute;
-            top: 91px;
-            left: 0;
-          }
         } 
+        &:focus {
+          color: $main-font;
+          &::before {
+            content: '';
+            width: 8px;
+            height: 53px;
+            background-color: $main-font;
+            position: absolute;
+            top: 19px;
+            left: 2px;
+          }
+        }
       }
     }
   }

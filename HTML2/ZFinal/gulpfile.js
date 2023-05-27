@@ -14,7 +14,7 @@ const paths = {
     dest: './dist'    
   },
   scripts: {
-    src: (['src/js/menu.js', './src/**/file1.js']),
+    src: ('src/js/menu.js', './src/**/*.js'),
     dest: './dist/js'
   },
   img: {
@@ -48,7 +48,7 @@ function styles() {
 function scripts() {
   return gulp.src(paths.scripts.src , {allowEmpty: true})
     .pipe(concat("scripts.min.js"))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(browserSync.stream());
 };
