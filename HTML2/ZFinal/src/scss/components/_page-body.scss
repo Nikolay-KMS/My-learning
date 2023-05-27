@@ -27,13 +27,13 @@
     min-height: 123px;
     @include flex-column-spaceBetw;
     gap: 23px;
-
-    p {
-      font-family: Lato;
-      font-style: italic;
-      line-height: 24px;
-    }  
   }
+  &__text {
+    font-family: Lato;
+    font-style: italic;
+    line-height: 20.67px;
+  }  
+  
   &-feature {
     font-family: Lato;
     margin: 0 auto;
@@ -237,8 +237,31 @@
 // тут вибачайте, так надо)))
 @media (max-width: 631px) {
   .price-items {
-    width: 400px;
+    max-width: 400px;
     margin: 0;
     justify-content: center;
+  }
+}
+
+@media (max-width:480px) {
+  .review {
+  
+    &__title {
+      font-size: 36px;
+      padding-top: 57px;
+    }
+    &__items {
+      margin-top: 53px;
+    }
+    &__item {
+      width: 100%;
+    }
+    &__text {
+      line-height: 21.5px;
+      margin: 0 25px;
+    }
+    &-feature {
+      margin: 37px 20px 0;
+    }
   }
 }
