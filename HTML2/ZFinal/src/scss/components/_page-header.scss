@@ -1,8 +1,9 @@
 
 
-button {
+.button {
   background-color: $main-color;
   border: 0;
+  color: $white-font;
 
   &:hover {
     color: $main-font;
@@ -10,10 +11,6 @@ button {
     cursor: pointer;
   }
 }
-
-
-
-
 
 .menu-wrapper {
   margin: 0 auto;
@@ -25,9 +22,6 @@ button {
   color: $main-font;
   text-align: center;
 }
-
-
-
 
 .navbar {
   @include flex-row-spaceBetw-center;
@@ -54,7 +48,6 @@ button {
     font-weight: 700;
     line-height: 16px;          
     text-transform: uppercase;
-
 
     &:hover {
       color: $white-font;
@@ -91,18 +84,10 @@ button {
   }
   &__button {
     margin-left: 48px;
-    background-color: $main-color;
-    color: $white-font;
     font-weight: 700;
     width: 145px;
     height: 37px;
     border-radius: 40px;
-    border: 0;
-    &:hover {
-      color: $main-font;
-      background: $white-font;
-      cursor: pointer;
-    }
   }
   &-links {
     @include flex-row-spaceBetw-center;
@@ -162,12 +147,6 @@ button {
     font-size: 21px;
     font-weight: 700;
     line-height: 22px;
-    color: $white-font;
-    &:hover {
-      color: $main-font;
-      background-color: $white-font;
-      cursor: pointer;
-    }
   }
 }
 
@@ -178,14 +157,13 @@ button {
 }
 
 @media (max-width: 992px) {
- .navbar {
-    &-wrapper {
-      background-color: #27262A;
-    }
-
+  .navbar {
     height: 118px;
     flex-wrap: wrap;
 
+    &-wrapper {
+      background-color: #27262A;
+    }
     &__icon {
       margin-left: 10px;
     }

@@ -37,18 +37,17 @@ function styles() {
     .pipe(autoprefixer({
       cascade: false
     }))
-    // .pipe(cleanCSS())
+    .pipe(cleanCSS())
     .pipe(rename({
       basename: 'style',
       suffix:'.min'
     }))
     .pipe(gulp.dest(paths.styles.dest))
-    // .pipe(reload({stream: true}));
 };
 function scripts() {
   return gulp.src(paths.scripts.src , {allowEmpty: true})
     .pipe(concat("scripts.min.js"))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(browserSync.stream());
 };
@@ -84,7 +83,6 @@ gulp.task('build', gulp.parallel(styles, scripts, img, cloneHtml))
 gulp.task('dev', gulp.parallel (serverRun, watchAll))
 
 gulp.task('clean', cleanAll)
-
 gulp.task('default', gulp.parallel (serverRun, watchAll))
 
 
