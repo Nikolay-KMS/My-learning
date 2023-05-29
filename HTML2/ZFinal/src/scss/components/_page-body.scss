@@ -17,8 +17,8 @@
   &__items {
     @include flex-row-spaceBetw-center;
     flex-wrap: wrap;
-    margin-top: 83px;
-    row-gap: 92px;
+    margin-top: 80px;
+    row-gap: 105px;
   }
   &__item {
     width: calc(-87px*2/3 + 33.33%);
