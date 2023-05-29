@@ -1,4 +1,20 @@
 
+
+button {
+  background-color: $main-color;
+  border: 0;
+
+  &:hover {
+    color: $main-font;
+    background: $white-font;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
 .menu-wrapper {
   margin: 0 auto;
   // background-image: url('/HTML2/ZFinal/dist/img/bg.png');
@@ -9,6 +25,9 @@
   color: $main-font;
   text-align: center;
 }
+
+
+
 
 .navbar {
   @include flex-row-spaceBetw-center;
@@ -35,6 +54,7 @@
     font-weight: 700;
     line-height: 16px;          
     text-transform: uppercase;
+
 
     &:hover {
       color: $white-font;
@@ -138,13 +158,11 @@
     bottom: -31px;  
     width: 390px;
     height: 62px;
-    background-color: $main-fon;
-    color: $white-font;
     border-radius: 31px;
-    border: 0;
     font-size: 21px;
     font-weight: 700;
     line-height: 22px;
+    color: $white-font;
     &:hover {
       color: $main-font;
       background-color: $white-font;
