@@ -61,8 +61,12 @@
 
   &-wrapper {    
     // background-image: url('/HTML2/ZFinal/dist/img/bg3.png');
-    background-image: url('/img/bg3.png');
-  }
+    background: url('/img/bg3.png');
+
+    // height: 100vh;
+    // width: 100vw;
+    // background-size: cover;  
+}
   &-title {
     padding-top: 132px;
     font-size: 48px;
