@@ -2,9 +2,9 @@
 
 class Employee {
   constructor(name = 'Noname', age = "undef", salary = "None") {
-    this.name = name
-    this.age = age
-    this.salary = salary
+    this._name = name
+    this._age = age
+    this._salary = salary
   }
 
   get name() {
@@ -39,9 +39,6 @@ class Programmer extends Employee {
     this.lang = lang
   }
 
-  set salary(value) {
-    this._salary = value;
-  }
   get salary() {
     return (this._salary)*3;
   }
@@ -49,6 +46,7 @@ class Programmer extends Employee {
 
 const employee_1 = new Employee ('Yasja', 54, 800);
 console.log(employee_1);
+employee_1.salary = 100;
 
 const programmer_1 = new Programmer ('Yasja', 54, 800);
 console.log(programmer_1);
