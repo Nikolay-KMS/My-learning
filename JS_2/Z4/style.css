@@ -1,0 +1,27 @@
+.wait {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 50%;
+  /* background-color: #77da50; */
+  border: 6px solid rgb(149, 212, 77);
+  border-top: 6px solid transparent;
+  transform: rotate(90deg);
+  /* transition: all 5s; */
+  /* animation-name: rotate  ; */
+  /* animation-duration: 0.7s;  */
+  animation:  linear 1s infinite rotate;
+  /* display: inline-block; */
+}
+.characters {
+  /* display: inline-block; */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

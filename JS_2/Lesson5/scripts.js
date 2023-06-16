@@ -11,7 +11,9 @@ function changeColor() {
   return function (event) {
     //  count++;
     // if(count === color.length) count = 0;
-    event.target.style.color = color[++count === color.length ? count = 0: false];
+    event.target.style.color = color[++count === color.length ? count = 0: count];
+
+    // event.target.style.color = color[1];
     console.log(count);
   }
 }
