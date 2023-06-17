@@ -52,13 +52,12 @@ function characters(obj) {
     }))
   });
   Promise.all(arr)
-  .then(() => console.log(1))
   .then(() => deleteComa(obj.episode))
   .then(() => document.querySelector(`.episode-${obj.episode} .wait`).classList.remove('wait'))
 }
 
 new Promise(function (resolve) {
-  let adr = 'data.json';
+  let adr = 'https://ajax.test-danit.com/api/swapi/films';
   function pullData(adr) {
     fetch(adr)
     .then(response => response.json())
