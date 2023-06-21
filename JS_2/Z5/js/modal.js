@@ -46,6 +46,7 @@ let modal = {
       responsePostJson = await fetch(urlPost, option);
       if(responsePostJson.ok) {
         let responsePost = await responsePostJson.json();
+        // console.log(responsePost);
         postInfo.id = responsePost.id;
         modal.pushCard(postInfo);
       } 

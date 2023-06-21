@@ -36,7 +36,10 @@ import modal from "./js/modal.js";
 let urlUsers = 'https://ajax.test-danit.com/api/json/users';
 let urlPosts = 'https://ajax.test-danit.com/api/json/posts';
 // let urlDeletePost ='https://ajax.test-danit.com/api/json/posts/$%7BpostId%7D';    // не працює скотиняка, тому використовую наступний
-let urlDeletePost ='https://jsonplaceholder.typicode.com/posts/1';
+let baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+let baseUrl2 = 'https://jsonplaceholder.typicode.com/posts/1';
+
+// let urlDeletePost = new URL('https://jsonplaceholder.typicode.com/posts');
 
 let users;
 export {users};
@@ -60,20 +63,19 @@ async function getResponse(urlUsers, urlPosts) {
 
 getResponse(urlUsers, urlPosts);
 
-async function deletePost(key, value) {
-  let postInfo = {key, value}
+async function deletePost(value) {
   let option = {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: JSON.stringify(postInfo)
   }
   let responseDelete;
   try {
+    let urlDeletePost = new URL(`/posts/${value}`,baseUrl);
+    console.log(urlDeletePost);
     responseDelete = await fetch(urlDeletePost, option);
     if(responseDelete.ok) {
       document.querySelector(`.post-${value}`).remove();
+      // let responseDelete2 = await responseDelete.json();
+      // console.log(responseDelete2);
     } else {
       console.log(" Помилка в запросі на видалення карточки. Статус:", responseDelete.status);
     }
@@ -85,7 +87,7 @@ async function deletePost(key, value) {
 
 function btnEvent() { 
   if(!event.target.classList.contains('btn')) return;
-  deletePost('id', event.target.dataset.id)
+  deletePost(event.target.dataset.id)
 }
 
 document.body.addEventListener('click', btnEvent)
