@@ -1,6 +1,6 @@
  class Modal {
   constructor() {}
-  renderModal() {
+  renderModal() {         // намалювати модалку в ХТМЛ
     document.querySelector('main').insertAdjacentHTML("beforeend", 
       `<div id="modalCreate" class=" bg-opacity-50 w-full top-0 bottom-0 fixed bg-black">
         <div id="modalCreateWindow" class="bg-emerald-950 min-h-[200px] w-1/2 mt-24 rounded-3xl mx-auto">
@@ -11,7 +11,7 @@
               <div class="bg-red-500 w-8 h-0.5 rotate-45 absolute"></div>
             </div>
           </div>          
-          <div id="modalCreateInputs" class="mx-auto w-fit pt-4 space-y-5">
+          <form id="modalCreateInputs" class="mx-auto w-fit pt-4 space-y-5">
             <select name="chooseDoctor" id="chooseDoctor" class="bg-yellow-200 rounded text-slate-900 px-3">
               <option disabled selected value="" class="">Choose a doctor</option>
               <option value="Cardiologist">Cardiologist</option>
@@ -22,17 +22,17 @@
 
             </div>     
             <div class="flex justify-between pb-4">
-              <button  id="btnModelCreate" class="mx-1 border rounded px-4 py-2 bg-emerald-800">Create</button>
+              <button  id="btnModelCreate" type="submit" class="mx-1 border rounded px-4 py-2 bg-emerald-800">Create</button>
             </div>
-          </div>
+          </form>
         </div>
       </div>`
     );
   }
-  closeModal() {
+  closeModal() {        // грохнути модалку
     document.querySelector('#modalCreate').remove();
   }
-  editModal(id) {
+  editModal(id) {           // намалювати модалку в ХТМЛ, при зміні даних
     document.querySelector('main').insertAdjacentHTML("beforeend", 
       `<div id="modalCreate" class=" bg-opacity-50 w-full top-0 bottom-0 fixed bg-black">
         <div id="modalCreateWindow" class="bg-emerald-950 min-h-[200px] w-1/2 mt-24 rounded-3xl mx-auto">
@@ -61,7 +61,7 @@
       </div>`
     );
     document.querySelector('#modalCreate').dataset.id = id;
-  }
+  }          // а це напевно костиль. для передачі АйДи
 }
 
 
@@ -78,13 +78,13 @@ class Visit {
     this.age = age;
     this.date = date;
   }
-  renderCommon() {
+  renderCommon() {            // намалювати в модалці "загальні" інпути
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="nameCreate" class="mx-auto mt-2 block"> Type your First & Last Name
-        <input id="nameCreate" required type="text" placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="nameCreate" type="text" required placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="targetCreate" class="block "> Type your target
-        <input id="targetCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="targetCreate" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="descriptionCreate" class="block "> Type your description
         <input id="descriptionCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
@@ -96,17 +96,17 @@ class Visit {
         <option value="Low" class="">Low</option>
       </select> `)
   }
-  deleteInputs() {
+  deleteInputs() {          // грохнути інпути в модалці
     document.querySelector('#inputs').innerHTML = '';
   }
 
-  editCommon() {    
+  editCommon() {              // намалювати в модалці "загальні" інпути, при зміні карточки
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="nameCreate" class="mx-auto mt-2 block"> Type your First & Last Name
-        <input id="nameCreate" required type="text" placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.name}>
+        <input id="nameCreate" type="text" required placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.name}>
       </label>
       <label for="targetCreate" class="block "> Type your target
-        <input id="targetCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.target}>
+        <input id="targetCreate" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.target}>
       </label>
       <label for="descriptionCreate" class="block "> Type your description
         <input id="descriptionCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.description}>
@@ -118,13 +118,13 @@ class Visit {
         <option value="Low" class="">Low</option>
       </select> `
     )
-    document.querySelector('#chooseDoctor').value = this.doctor;
-    document.querySelector('#stateCreate').value = this.state;    
+    document.querySelector('#chooseDoctor').value = this.doctor;   // вписати в Селект значення
+    document.querySelector('#stateCreate').value = this.state;     // вписати в Селект значення  
   }
 }
 
 class VisitCardiologist extends Visit {
-  renderExtends() {
+  renderExtends() {          // намалювати в модалці інпути для конкретного лікаря
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="pressure" class="block "> Pressure
         <input id="pressure" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
@@ -140,7 +140,7 @@ class VisitCardiologist extends Visit {
       </label> `
     )
   }
-  editExtends() {
+  editExtends() {         // намалювати в модалці інпути для конкретного лікаря, при зміні даних
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="pressure" class="block "> Pressure
         <input id="pressure" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.pressure}>
@@ -201,7 +201,6 @@ async function postCard(data) {
     },
     mode: "cors",
     "body" : JSON.stringify(data)}
-
   await fetch("https://eobeobd58cj45sc.m.pipedream.net", option)
   .then(res => res.json())
   .then(res => {
@@ -212,7 +211,6 @@ async function postCard(data) {
 
 
 async function getCards() {
-
   await fetch("https://eocpfm06arl4ibn.m.pipedream.net")
   .then(res => res.json())
   .then(res => {
@@ -248,7 +246,7 @@ async function deleteCard(dataKey) {
     mode: "cors",
     "body": JSON.stringify(dataKey)
   }
-  
+
   await fetch ("https://eokub9t5q3an3z1.m.pipedream.net", option)
   .then(response => response.json())
   .then(res => {
@@ -256,9 +254,10 @@ async function deleteCard(dataKey) {
   })
 };
 
-// const obj = {
-//   78: {
-//     age: false,
+                    
+// const obj = {        // наступні 5 абзаців для тестування. Щоб не трогати Ендпоинт (pipedream)
+//   78: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
+//     age: false, 
 //     bodyWeight: false,
 //     date:"2023-06-14",
 //     description: "description1",
@@ -283,8 +282,8 @@ async function deleteCard(dataKey) {
 //   }
 // }
 
-// function postCard(data) { 
-//   addCardToHtml(data);
+// function postCard({key, ...data}) { 
+//   addCardToHtml({key, ...data.data});
 // };
 
 // function getCards() {
@@ -293,8 +292,8 @@ async function deleteCard(dataKey) {
 //   checkCork();
 // };
 
-// async function putCard(data) {
-//   editCardInHtml(data)
+// async function putCard({key, ...data}) {
+//   editCardInHtml({key, ...data.data})
 // }
 
 // async function deleteCard(dataKey) {
@@ -311,7 +310,7 @@ class Cards {
     this.state = state;
   }  
 
-  renderHtmlCommon() {
+  renderHtmlCommon() {                      // малюю в ХТМЛ "загальні дані" карточки
     document.querySelector('#cards').insertAdjacentHTML('beforeend', `
       <div id="${this.id}" class="card border-2 rounded mb-3 px-5 py-2">
         <div class="flex justify-between">
@@ -335,7 +334,7 @@ class Cards {
     )
   }
 
-  editCardCommon() {
+  editCardCommon() {                     // редактую в ХТМЛ "загальні дані" карточки
     document.getElementById(`${this.id}`).innerHTML = `
       <div class="flex justify-between">
         <div>
@@ -366,7 +365,7 @@ class CardCardiologist extends Cards {
     this.age = age;
   }
 
-  renderHtml() {
+  renderHtml() {                    // малюю в ХТМЛ "дані карточки для конкретного лікаря" 
     document.getElementById(`${this.id}`).querySelector('.extended').insertAdjacentHTML('beforeend', `
       <p class="pressure">${this.pressure}</p>
       <p class="bodyWeight">${this.bodyWeight}</p>
@@ -444,14 +443,14 @@ function filterCards() {
 
 document.querySelector('#logIn').addEventListener('click', logIn);
 
-function logIn() {
+function logIn() {                    // модалка з логіном
   const modal = document.querySelector('#modalEnter');
   modal.classList.remove('hidden');
   document.querySelector('#btnModelLogIn').addEventListener('click', btnModelLogIn);
   modal.addEventListener('click', clickOutModel);
 }
 
-function btnModelLogIn() {
+function btnModelLogIn() {                  // примітивна перевірка логіна і пар.
   const email = 'email';
   const password = 'pas';
   const inpModelEmail = document.querySelector('#inpModelEmail');
@@ -467,9 +466,9 @@ function btnModelLogIn() {
   }
 }
 
-// це прибрати пізніше  -------------------------------------------------------
-// getCards()
-function clickOutModel() {
+getCards();              // розкоменутвати щоб не вводити пароль))
+
+function clickOutModel() {               // якщо тикнули мимо модалки
   if(event.target.closest('#modalEnterWindow')) return;
   hideLogInModel();
 }
@@ -479,14 +478,14 @@ function hideLogInModel() {
   modal.classList.add('hidden');
 }
 
-function checkCork() {
+function checkCork() {             // якщо є карточки, то прибипаємо плашку
   const cork = document.querySelector('#cork');
   (!(document.querySelector('#cards').innerHTML == false)) ? cork.classList.add('hidden') :cork.classList.remove('hidden');
 }
 
 document.querySelector('#createAppoin').addEventListener('click', loadModalCreate);
 
-function loadModalCreate() {
+function loadModalCreate() {             // модалка для створення карток
   new Modal().renderModal();
   document.querySelector('#chooseDoctor').addEventListener('change', changeDoctor);
   new Visit().renderCommon();
@@ -494,11 +493,11 @@ function loadModalCreate() {
   document.querySelector('#btnModelCreate').addEventListener('click', createNewAppoin);
 }
 
-function closeModalCreate() {
+function closeModalCreate() {                 // закриття модалки
   new Modal().closeModal();
 }
 
-function changeDoctor() {
+function changeDoctor() {                    // Селект зміни лікаря
   const doctor = document.querySelector('#chooseDoctor').value;
   const data = getDataFromModal();
   new Visit().deleteInputs();
@@ -519,7 +518,7 @@ function changeDoctor() {
   };  
 }
 
-function createNewAppoin() {
+function createNewAppoin() {                    // кнопка Створити
   const data = getDataFromModal();
   new Modal().closeModal();
   const key = getNewId();
@@ -527,7 +526,7 @@ function createNewAppoin() {
   postCard(objData);
 }
 
-function getDataFromModal() {
+function getDataFromModal() {                      // беру введені дані з модалки
   const doctor = document.querySelector('#chooseDoctor').value;
   const name = document.querySelector('#nameCreate').value;
   const target = document.querySelector('#targetCreate').value;
@@ -542,7 +541,7 @@ function getDataFromModal() {
   return {doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
 }
 
-function getNewId() {
+function getNewId() {                      // присвоюю новий АйДи
   const arrCard = document.querySelectorAll('.card');
   const arrId = Array.from(arrCard).map(el => +el.id);
   return createNewId(arrId);
@@ -558,7 +557,7 @@ function createNumber() {
   return Math.round(Math.random()*100);
 }
 
-function addCardToHtml(data) {
+function addCardToHtml(data) {               // добавляю карту в НТМЛ
   if(data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.renderHtmlCommon();
@@ -577,7 +576,8 @@ function addCardToHtml(data) {
   addEventsOnCards(data.key)
 }
 
-function addEventsOnCards(id) {
+function addEventsOnCards(id) {                 // добавляю для карти Івенту
+  console.log(id);
   document.getElementById (id).querySelector('.more')
   .addEventListener('click', btnMore);
 document.getElementById (id).querySelector('.changeVisit')
@@ -590,20 +590,20 @@ document.querySelectorAll('.card .more').forEach(btn => btn.addEventListener('cl
 document.querySelectorAll('.card .changeVisit').forEach(btn => btn.addEventListener('click',btnChangeVisit));
 document.querySelectorAll('.card .deleteCard').forEach(btn => btn.addEventListener('click',btnDeleteCard));
 
-function btnMore() {
+function btnMore() {                   // кнопка - більше інфо
   const card = event.target.closest('.card');
   card.querySelector('.extended').classList.remove('hidden');
   card.querySelector('.more').classList.add('hidden');
 }
 
-function btnChangeVisit() {
+function btnChangeVisit() {                    // кнопка змінити
   const id = event.target.closest('.card').id;
   new Modal().editModal(id);
   changeModalInputs();
   document.querySelector('#chooseDoctor').addEventListener('change', changeModalInputs);
 }
 
-function changeModalInputs() {
+function changeModalInputs() {                     // зміна картки
   const id = document.querySelector('#modalCreate').dataset.id;
   const card = document.getElementById(id);
   const data = getDataFromHtml(card);
@@ -630,13 +630,13 @@ function changeModalInputs() {
   document.querySelector('#btnModelChange').addEventListener('click', changeExistAppoin);
 }
 
-function btnDeleteCard() {
+function btnDeleteCard() {                     // кнопка грохнути картку
   const card = event.target.closest('.card');
   const key = card.id;
   deleteCard(key);
 }
 
-function getDataFromHtml(card) {
+function getDataFromHtml(card) {                     // зчитати всі дані з картки в ХТМЛ
   const key = card.id;
   const doctor = card.querySelector('.doctor').innerText;
   const name = card.querySelector('.name').innerText;
@@ -652,7 +652,7 @@ function getDataFromHtml(card) {
   return {key, doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
 }
 
-function changeExistAppoin() {
+function changeExistAppoin() {                     // зпуск зміни картки
   const key = document.querySelector('#modalCreate').dataset.id;
   const data = getDataFromModal();
   const objData = {
@@ -663,7 +663,7 @@ function changeExistAppoin() {
   new Modal().closeModal();
 }
 
-function editCardInHtml(data) {
+function editCardInHtml(data) {                  //  добавити в ХТМЛ змінену картку
   if(data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.editCardCommon();

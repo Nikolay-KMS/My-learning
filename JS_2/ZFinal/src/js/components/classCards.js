@@ -9,7 +9,7 @@ class Cards {
     this.state = state;
   }  
 
-  renderHtmlCommon() {
+  renderHtmlCommon() {                      // малюю в ХТМЛ "загальні дані" карточки
     document.querySelector('#cards').insertAdjacentHTML('beforeend', `
       <div id="${this.id}" class="card border-2 rounded mb-3 px-5 py-2">
         <div class="flex justify-between">
@@ -33,7 +33,7 @@ class Cards {
     )
   }
 
-  editCardCommon() {
+  editCardCommon() {                     // редактую в ХТМЛ "загальні дані" карточки
     document.getElementById(`${this.id}`).innerHTML = `
       <div class="flex justify-between">
         <div>
@@ -64,7 +64,7 @@ class CardCardiologist extends Cards {
     this.age = age;
   }
 
-  renderHtml() {
+  renderHtml() {                    // малюю в ХТМЛ "дані карточки для конкретного лікаря" 
     document.getElementById(`${this.id}`).querySelector('.extended').insertAdjacentHTML('beforeend', `
       <p class="pressure">${this.pressure}</p>
       <p class="bodyWeight">${this.bodyWeight}</p>

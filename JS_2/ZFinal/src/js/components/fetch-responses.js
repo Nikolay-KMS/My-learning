@@ -8,7 +8,6 @@ async function postCard(data) {
     },
     mode: "cors",
     "body" : JSON.stringify(data)}
-
   await fetch("https://eobeobd58cj45sc.m.pipedream.net", option)
   .then(res => res.json())
   .then(res => {
@@ -19,7 +18,6 @@ async function postCard(data) {
 
 
 async function getCards() {
-
   await fetch("https://eocpfm06arl4ibn.m.pipedream.net")
   .then(res => res.json())
   .then(res => {
@@ -55,7 +53,7 @@ async function deleteCard(dataKey) {
     mode: "cors",
     "body": JSON.stringify(dataKey)
   }
-  
+
   await fetch ("https://eokub9t5q3an3z1.m.pipedream.net", option)
   .then(response => response.json())
   .then(res => {
@@ -63,9 +61,10 @@ async function deleteCard(dataKey) {
   })
 };
 
-// const obj = {
-//   78: {
-//     age: false,
+                    
+// const obj = {        // наступні 5 абзаців для тестування. Щоб не трогати Ендпоинт (pipedream)
+//   78: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
+//     age: false, 
 //     bodyWeight: false,
 //     date:"2023-06-14",
 //     description: "description1",
@@ -90,8 +89,8 @@ async function deleteCard(dataKey) {
 //   }
 // }
 
-// function postCard(data) { 
-//   addCardToHtml(data);
+// function postCard({key, ...data}) { 
+//   addCardToHtml({key, ...data.data});
 // };
 
 // function getCards() {
@@ -100,8 +99,8 @@ async function deleteCard(dataKey) {
 //   checkCork();
 // };
 
-// async function putCard(data) {
-//   editCardInHtml(data)
+// async function putCard({key, ...data}) {
+//   editCardInHtml({key, ...data.data})
 // }
 
 // async function deleteCard(dataKey) {

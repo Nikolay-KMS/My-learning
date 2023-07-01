@@ -2,14 +2,14 @@
 
 document.querySelector('#logIn').addEventListener('click', logIn);
 
-function logIn() {
+function logIn() {                    // модалка з логіном
   const modal = document.querySelector('#modalEnter');
   modal.classList.remove('hidden');
   document.querySelector('#btnModelLogIn').addEventListener('click', btnModelLogIn);
   modal.addEventListener('click', clickOutModel);
 }
 
-function btnModelLogIn() {
+function btnModelLogIn() {                  // примітивна перевірка логіна і пар.
   const email = 'email';
   const password = 'pas';
   const inpModelEmail = document.querySelector('#inpModelEmail');
@@ -25,9 +25,9 @@ function btnModelLogIn() {
   }
 }
 
-// це прибрати пізніше  -------------------------------------------------------
-// getCards()
-function clickOutModel() {
+getCards();              // розкоменутвати щоб не вводити пароль))
+
+function clickOutModel() {               // якщо тикнули мимо модалки
   if(event.target.closest('#modalEnterWindow')) return;
   hideLogInModel();
 }
@@ -37,14 +37,14 @@ function hideLogInModel() {
   modal.classList.add('hidden');
 }
 
-function checkCork() {
+function checkCork() {             // якщо є карточки, то прибипаємо плашку
   const cork = document.querySelector('#cork');
   (!(document.querySelector('#cards').innerHTML == false)) ? cork.classList.add('hidden') :cork.classList.remove('hidden');
 }
 
 document.querySelector('#createAppoin').addEventListener('click', loadModalCreate);
 
-function loadModalCreate() {
+function loadModalCreate() {             // модалка для створення карток
   new Modal().renderModal();
   document.querySelector('#chooseDoctor').addEventListener('change', changeDoctor);
   new Visit().renderCommon();
@@ -52,11 +52,11 @@ function loadModalCreate() {
   document.querySelector('#btnModelCreate').addEventListener('click', createNewAppoin);
 }
 
-function closeModalCreate() {
+function closeModalCreate() {                 // закриття модалки
   new Modal().closeModal();
 }
 
-function changeDoctor() {
+function changeDoctor() {                    // Селект зміни лікаря
   const doctor = document.querySelector('#chooseDoctor').value;
   const data = getDataFromModal();
   new Visit().deleteInputs();
@@ -77,7 +77,7 @@ function changeDoctor() {
   };  
 }
 
-function createNewAppoin() {
+function createNewAppoin() {                    // кнопка Створити
   const data = getDataFromModal();
   new Modal().closeModal();
   const key = getNewId();
@@ -85,7 +85,7 @@ function createNewAppoin() {
   postCard(objData);
 }
 
-function getDataFromModal() {
+function getDataFromModal() {                      // беру введені дані з модалки
   const doctor = document.querySelector('#chooseDoctor').value;
   const name = document.querySelector('#nameCreate').value;
   const target = document.querySelector('#targetCreate').value;
@@ -100,7 +100,7 @@ function getDataFromModal() {
   return {doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
 }
 
-function getNewId() {
+function getNewId() {                      // присвоюю новий АйДи
   const arrCard = document.querySelectorAll('.card');
   const arrId = Array.from(arrCard).map(el => +el.id);
   return createNewId(arrId);
@@ -116,7 +116,7 @@ function createNumber() {
   return Math.round(Math.random()*100);
 }
 
-function addCardToHtml(data) {
+function addCardToHtml(data) {               // добавляю карту в НТМЛ
   if(data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.renderHtmlCommon();
@@ -135,7 +135,8 @@ function addCardToHtml(data) {
   addEventsOnCards(data.key)
 }
 
-function addEventsOnCards(id) {
+function addEventsOnCards(id) {                 // добавляю для карти Івенту
+  console.log(id);
   document.getElementById (id).querySelector('.more')
   .addEventListener('click', btnMore);
 document.getElementById (id).querySelector('.changeVisit')
@@ -148,20 +149,20 @@ document.querySelectorAll('.card .more').forEach(btn => btn.addEventListener('cl
 document.querySelectorAll('.card .changeVisit').forEach(btn => btn.addEventListener('click',btnChangeVisit));
 document.querySelectorAll('.card .deleteCard').forEach(btn => btn.addEventListener('click',btnDeleteCard));
 
-function btnMore() {
+function btnMore() {                   // кнопка - більше інфо
   const card = event.target.closest('.card');
   card.querySelector('.extended').classList.remove('hidden');
   card.querySelector('.more').classList.add('hidden');
 }
 
-function btnChangeVisit() {
+function btnChangeVisit() {                    // кнопка змінити
   const id = event.target.closest('.card').id;
   new Modal().editModal(id);
   changeModalInputs();
   document.querySelector('#chooseDoctor').addEventListener('change', changeModalInputs);
 }
 
-function changeModalInputs() {
+function changeModalInputs() {                     // зміна картки
   const id = document.querySelector('#modalCreate').dataset.id;
   const card = document.getElementById(id);
   const data = getDataFromHtml(card);
@@ -188,13 +189,13 @@ function changeModalInputs() {
   document.querySelector('#btnModelChange').addEventListener('click', changeExistAppoin);
 }
 
-function btnDeleteCard() {
+function btnDeleteCard() {                     // кнопка грохнути картку
   const card = event.target.closest('.card');
   const key = card.id;
   deleteCard(key);
 }
 
-function getDataFromHtml(card) {
+function getDataFromHtml(card) {                     // зчитати всі дані з картки в ХТМЛ
   const key = card.id;
   const doctor = card.querySelector('.doctor').innerText;
   const name = card.querySelector('.name').innerText;
@@ -210,7 +211,7 @@ function getDataFromHtml(card) {
   return {key, doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
 }
 
-function changeExistAppoin() {
+function changeExistAppoin() {                     // зпуск зміни картки
   const key = document.querySelector('#modalCreate').dataset.id;
   const data = getDataFromModal();
   const objData = {
@@ -221,7 +222,7 @@ function changeExistAppoin() {
   new Modal().closeModal();
 }
 
-function editCardInHtml(data) {
+function editCardInHtml(data) {                  //  добавити в ХТМЛ змінену картку
   if(data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.editCardCommon();

@@ -12,13 +12,13 @@ class Visit {
     this.age = age;
     this.date = date;
   }
-  renderCommon() {
+  renderCommon() {            // намалювати в модалці "загальні" інпути
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="nameCreate" class="mx-auto mt-2 block"> Type your First & Last Name
-        <input id="nameCreate" required type="text" placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="nameCreate" type="text" required placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="targetCreate" class="block "> Type your target
-        <input id="targetCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="targetCreate" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="descriptionCreate" class="block "> Type your description
         <input id="descriptionCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
@@ -30,17 +30,17 @@ class Visit {
         <option value="Low" class="">Low</option>
       </select> `)
   }
-  deleteInputs() {
+  deleteInputs() {          // грохнути інпути в модалці
     document.querySelector('#inputs').innerHTML = '';
   }
 
-  editCommon() {    
+  editCommon() {              // намалювати в модалці "загальні" інпути, при зміні карточки
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="nameCreate" class="mx-auto mt-2 block"> Type your First & Last Name
-        <input id="nameCreate" required type="text" placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.name}>
+        <input id="nameCreate" type="text" required placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.name}>
       </label>
       <label for="targetCreate" class="block "> Type your target
-        <input id="targetCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.target}>
+        <input id="targetCreate" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.target}>
       </label>
       <label for="descriptionCreate" class="block "> Type your description
         <input id="descriptionCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.description}>
@@ -52,13 +52,13 @@ class Visit {
         <option value="Low" class="">Low</option>
       </select> `
     )
-    document.querySelector('#chooseDoctor').value = this.doctor;
-    document.querySelector('#stateCreate').value = this.state;    
+    document.querySelector('#chooseDoctor').value = this.doctor;   // вписати в Селект значення
+    document.querySelector('#stateCreate').value = this.state;     // вписати в Селект значення  
   }
 }
 
 class VisitCardiologist extends Visit {
-  renderExtends() {
+  renderExtends() {          // намалювати в модалці інпути для конкретного лікаря
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="pressure" class="block "> Pressure
         <input id="pressure" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
@@ -74,7 +74,7 @@ class VisitCardiologist extends Visit {
       </label> `
     )
   }
-  editExtends() {
+  editExtends() {         // намалювати в модалці інпути для конкретного лікаря, при зміні даних
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="pressure" class="block "> Pressure
         <input id="pressure" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.pressure}>
