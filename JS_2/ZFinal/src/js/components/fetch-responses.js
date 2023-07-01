@@ -1,6 +1,6 @@
 
-async function postCard(data) {  
 
+async function postCard(data) { 
   const option = {
     method: "POST",
     headers: {
@@ -9,95 +9,102 @@ async function postCard(data) {
     mode: "cors",
     "body" : JSON.stringify(data)}
 
-  const res = await fetch("https://eobeobd58cj45sc.m.pipedream.net", option)
-  .then(response => {
-    console.log(response);
-    return response;
-  })
+  await fetch("https://eobeobd58cj45sc.m.pipedream.net", option)
+  .then(res => res.json())
   .then(res => {
-    return res.json();
-  });
-
-  // const obj = {
-  //   key: 91,
-  //   value: {
-  //     age:"3",
-  //     bodyWeight: "45",
-  //     date: false,
-  //     description: "7",
-  //     doctor: "Cardiologist",
-  //     illnesses: "4",
-  //     name: "9",
-  //     pressure: "65",
-  //     state: "Low",
-  //     target: "8",
-  //   }
-  // }
-  // const id = obj.key;  
-  // console.log({id, ...obj.value})
-
-  const id = res.key;  
-  addCardToHtml({id, ...res.value});
+    const id = res.key;  
+    addCardToHtml({id, ...res.value});
+  })
 }
+
 
 async function getCards() {
 
-  // const res = await fetch("https://eocpfm06arl4ibn.m.pipedream.net")
-  // .then(response => {
-  //   console.log(response);
-  //   return response;
-  // })
-  // .then(res => {
-  //   return res.json();
-  // })
-  // .then(response => {
-  //   console.log(response)
-  //   return response;
-  // });
-
-  const obj = {
-    6: {
-      age: false,
-      bodyWeight: false,
-      date:"2023-06-28",
-      description: "3",
-      doctor:"Dentist",
-      illnesses : false,
-      name :"1",
-      pressure :  false,
-      state : "Normal",
-      target  :  "2",
-    },
-    27: {
-      age: false,
-      bodyWeight: false,
-      date: "2023-06-14",
-      description: "30",
-      doctor: "Dentist",
-      illnesses: false,
-      name: "Petr",
-      pressure: false,
-      state: "Normal",
-      target: "2Gu",
-    },
-    28: {
-      age: 24,
-      bodyWeight: false,
-      date: "2023-06-14",
-      description: "3",
-      doctor: "Dentist",
-      illnesses: false,
-      name: "1",
-      pressure: false,
-      state: "Normal",
-      target: "2",
-    }
-  }
-
-  // const arrCards = Object.entries(res);
-  const arrCards = Object.entries(obj);
-  
-  arrCards.forEach(elem => addCardToHtml({id:elem[0], ...elem[1]}));
-  checkCork();
+  await fetch("https://eocpfm06arl4ibn.m.pipedream.net")
+  .then(res => res.json())
+  .then(res => {
+    const arrCards = Object.entries(res);
+    arrCards.forEach(elem => addCardToHtml({key:elem[0], ...elem[1]}));
+    checkCork();
+  });
 }
 
+async function putCard(data) {
+  const option = {
+    method: "PUT",
+    headers: {
+      'Content-Type':'application/json'
+    },
+    mode: "cors",
+    "body": JSON.stringify(data)
+  }
+  const res = await fetch ("https://eo8o4phxh10xrep.m.pipedream.net", option)
+  .then(response => response.json())
+  .then(res => {
+  const key = res.key;
+  editCardInHtml({key, ...res.data})
+  })
+}
+
+async function deleteCard(dataKey) {
+  const option = {
+    method: "DELETE",
+    headers: {
+      'Content-Type':'application/json'
+    },
+    mode: "cors",
+    "body": JSON.stringify(dataKey)
+  }
+  
+  await fetch ("https://eokub9t5q3an3z1.m.pipedream.net", option)
+  .then(response => response.json())
+  .then(res => {
+    document.getElementById(res).remove();
+  })
+
+};
+
+// const obj = {
+//   78: {
+//     age: false,
+//     bodyWeight: false,
+//     date:"2023-06-14",
+//     description: "description1",
+//     doctor:"Dentist",
+//     illnesses : false,
+//     name :"name1",
+//     pressure :  false,
+//     state : "Normal",
+//     target  :  "target1",
+//   },
+//   27: {
+//     age: "age2",
+//     bodyWeight: false,
+//     date: false,
+//     description: "description2",
+//     doctor: "Therapist",
+//     illnesses: false,
+//     name: "name2",
+//     pressure: false,
+//     state: "High",
+//     target: "target2",
+//   }
+// }
+
+// function postCard(data) { 
+//   addCardToHtml(data);
+// };
+
+// function getCards() {
+//   const arrCards = Object.entries(obj); 
+//   arrCards.forEach(elem => addCardToHtml({key:elem[0], ...elem[1]}));
+//   checkCork();
+// };
+
+// async function putCard(data) {
+//   editCardInHtml(data)
+// }
+
+// async function deleteCard(dataKey) {
+//   document.getElementById(dataKey).remove();
+// }

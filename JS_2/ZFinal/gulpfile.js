@@ -20,6 +20,7 @@ const paths = {
            'src/js/components/classVisits.js',
            'src/js/components/fetch-responses.js',
            'src/js/components/classCards.js',
+           'src/js/components/formFind.js',
            'src/js/index.js']),
     dest: './dist/js'
   },

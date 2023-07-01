@@ -50,17 +50,15 @@
       -280 181 -438 127z"/>
       </g>
     </svg>
-    <button id="logIn" class="hidden bg-amber-200 text-slate-600 h-11 px-6 rounded-xl mr-10 text-xl font-bold">Log in</button>
-    <button id="createAppoin" class=" bg-amber-200 text-slate-600 h-11 px-6 rounded-xl mr-10 text-xl font-bold ">Create an appointment</button>
-      <!-- Поміняти місцями клас Хайден в батонах що вище -->
+    <button id="logIn" class=" bg-amber-200 text-slate-600 h-11 px-6 rounded-xl mr-10 text-xl font-bold">Log in</button>
+    <button id="createAppoin" class="hidden bg-amber-200 text-slate-600 h-11 px-6 rounded-xl mr-10 text-xl font-bold ">Create an appointment</button>
   </header>
 
 <main class="">
   <div class="form bg-slate-600 max-w-fit mt-12 mx-auto text-xl px-9 py-2 rounded-md mb-8">
     <div class="wrap rounded-md inline-block border">
-      <!-- <button class="">Find</button> -->
-      <label for="find" class="cursor-pointer">Find</label>
-      <input type="text" id="find" class="bg-slate-600 rounded-md min-w-[400px]">
+      <button id="btnFind">Find</button>
+      <input type="text" id="inputFind" class="bg-slate-600 rounded-md min-w-[400px]">
     </div>
     <select name="state" id="findState" class="bg-slate-600 cursor-pointer">
       <option disabled selected class="">State</option>
@@ -141,28 +139,30 @@
   </div>
 
   <div id="cards">
-
-
     
-  </div>
-    
-
-    <!-- <div id="3" class="card border-2 rounded">
-      <h2 class="name">name</h2>
-      <p class="doctor">doctor</p>
-      <div class="extended hidden" >
-        <p class="target">target</p>
-        <p class="description">description</p>
-        <p class="state">state</p>
+<!-- 
+    <div id="3" class="card border-2 rounded">
+      <div class="flex justify-between">
+        <div class="">
+          <h2 class="name">name</h2>
+          <p class="doctor">doctor</p>
+          <div class="extended hidden" >
+            <p class="target">target</p>
+            <p class="description">description</p>
+            <p class="state">state</p>
+          </div>
+          <button class="more border-2 rounded bg-violet-950 py-1 px-2">Show more</button>
+          <button class="change border-2 rounded bg-violet-950 py-1 px-2">Change visit</button>
+        </div>
+        <div class="deleteCard mt-2 cursor-pointer">
+          <div class="bg-red-600 w-5 h-0.5 rotate-45 translate-y-0.5 "></div>
+          <div class="bg-red-600 w-5 h-0.5 -rotate-45"></div>
+        </div>
       </div>
-      <button class="more border-2 rounded bg-violet-950 py-1 px-2">Show more</button>
-      <button class="change border-2 rounded bg-violet-950 py-1 px-2">Change visit</button>
-    </div>
-      -->
+    </div>     -->
 
+  </div>
 </main>
-
   <script type="module" src="./js/index.js"></script>
-
 </body>
 </html>

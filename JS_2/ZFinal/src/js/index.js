@@ -26,8 +26,7 @@ function btnModelLogIn() {
 }
 
 // це прибрати пізніше  -------------------------------------------------------
-getCards()
-
+// getCards()
 function clickOutModel() {
   if(event.target.closest('#modalEnterWindow')) return;
   hideLogInModel();
@@ -55,16 +54,14 @@ function loadModalCreate() {
 
 function closeModalCreate() {
   new Modal().closeModal();
-  // document.querySelector('#chooseDoctor').removeEventListener('change', changeDoctor);
-  // document.querySelector('#btnModelClose').removeEventListener('click', closeModalCreate);
-  // document.querySelector('#btnModelCreate').removeEventListener('click', createNewAppoin);
 }
 
-function changeDoctor({data}={}) {
+function changeDoctor() {
   const doctor = document.querySelector('#chooseDoctor').value;
+  const data = getDataFromModal();
   new Visit().deleteInputs();
   if(doctor === 'Cardiologist') {
-    const visit = new VisitCardiologist();
+    const visit = new VisitCardiologist(data);
     visit.renderCommon();
     visit.renderExtends()  
   };
@@ -74,7 +71,7 @@ function changeDoctor({data}={}) {
     visit.renderExtends() 
   };
   if(doctor === 'Therapist'){
-    const visit = new VisitTherapist();
+    const visit = new VisitTherapist(data);
     visit.renderCommon();
     visit.renderExtends() 
   };  
@@ -82,17 +79,10 @@ function changeDoctor({data}={}) {
 
 function createNewAppoin() {
   const data = getDataFromModal();
-  // console.log(date);
+  new Modal().closeModal();
   const key = getNewId();
-  const objData = {
-    key,
-    data: {doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
-  }
-
-  console.log({key, ...objData.data});
-
-  // postCard(data);
-  addCardToHtml({key, ...objData.data})
+  const objData = { key, data, }
+  postCard(objData);
 }
 
 function getDataFromModal() {
@@ -127,7 +117,6 @@ function createNumber() {
 }
 
 function addCardToHtml(data) {
-  // console.log(data);
   if(data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.renderHtmlCommon();
@@ -143,69 +132,111 @@ function addCardToHtml(data) {
     card.renderHtmlCommon();
     card.renderHtml();
   }; 
+  addEventsOnCards(data.key)
 }
-const arrBtnMore = document.querySelectorAll('.card .more');
-arrBtnMore.forEach(btn => btn.addEventListener('click', btnMore));
+
+function addEventsOnCards(id) {
+  document.getElementById (id).querySelector('.more')
+  .addEventListener('click', btnMore);
+document.getElementById (id).querySelector('.changeVisit')
+  .addEventListener('click', btnChangeVisit);
+  document.getElementById (id).querySelector('.deleteCard')
+  .addEventListener('click', btnDeleteCard);
+}
+
+document.querySelectorAll('.card .more').forEach(btn => btn.addEventListener('click', btnMore));
+document.querySelectorAll('.card .changeVisit').forEach(btn => btn.addEventListener('click',btnChangeVisit));
+document.querySelectorAll('.card .deleteCard').forEach(btn => btn.addEventListener('click',btnDeleteCard));
 
 function btnMore() {
   const card = event.target.closest('.card');
-  const id = card.id;
   card.querySelector('.extended').classList.remove('hidden');
   card.querySelector('.more').classList.add('hidden');
 }
 
-const arrChangeVisit = document.querySelectorAll('.card .changeVisit');
-arrChangeVisit.forEach(btn => btn.addEventListener('click', btnChangeVisit));
-
 function btnChangeVisit() {
-  const card = event.target.closest('.card');
-  // const id = card.id;
-  // const doctor = card.querySelector('.doctor').innerHTML;
-  const data = getDataFromHtml(card);
-    console.log(data);
+  const id = event.target.closest('.card').id;
+  new Modal().editModal(id);
+  changeModalInputs();
+  document.querySelector('#chooseDoctor').addEventListener('change', changeModalInputs);
+}
 
+function changeModalInputs() {
+  const id = document.querySelector('#modalCreate').dataset.id;
+  const card = document.getElementById(id);
+  const data = getDataFromHtml(card);
+  const doctor = document.querySelector('#chooseDoctor').value;
+  if(doctor !== '')   data.doctor = doctor;
+  new Visit().deleteInputs();
 
   if(data.doctor === 'Cardiologist') {
-    // const card = new CardCardiologist(data);
-    // card.renderHtmlCommon();
-    // card.renderHtml();
+    const visit = new VisitCardiologist(data);
+    visit.editCommon();
+    visit.editExtends();
   };
   if(data.doctor === 'Dentist') {
-    new Modal().renderModal();
-    document.querySelector('#chooseDoctor').addEventListener('change', changeDoctor);
     const visit = new VisitDentist(data);
-    visit.renderCommon();
-    visit.renderExtends();
-    document.querySelector('#btnModelClose').addEventListener('click', closeModalCreate);
-    document.querySelector('#btnModelCreate').addEventListener('click', createNewAppoin);
-    // const card = new CardDentist(data);
-    // card.renderHtmlCommon();
-    // card.renderHtml();
+    visit.editCommon();
+    visit.editExtends();
   };
   if(data.doctor === 'Therapist') {
-    // const card = new CardTherapist(data);
-    // card.renderHtmlCommon();
-    // card.renderHtml();
+    const visit = new VisitTherapist(data);
+    visit.editCommon();
+    visit.editExtends();
   }; 
+  document.querySelector('#btnModelClose').addEventListener('click', closeModalCreate);
+  document.querySelector('#btnModelChange').addEventListener('click', changeExistAppoin);
+}
+
+function btnDeleteCard() {
+  const card = event.target.closest('.card');
+  const key = card.id;
+  deleteCard(key);
 }
 
 function getDataFromHtml(card) {
-  // const card = document.getElementById
-  // console.log(card);
-  const id = card.id;
+  const key = card.id;
   const doctor = card.querySelector('.doctor').innerText;
   const name = card.querySelector('.name').innerText;
   const target = card.querySelector('.target').innerText;
   const description = card.querySelector('.description').innerText;
   const state = card.querySelector('.urgency').innerText;  
     
-  const pressure = card.querySelector('.pressure') ? document.querySelector('.pressure').innerText : false; 
-  const bodyWeight = card.querySelector('.bodyWeight') ? document.querySelector('.bodyWeight').innerText : false;   
-  const illnesses = card.querySelector('.illnesses') ? document.querySelector('.illnesses').innerText : false; 
-  const age = card.querySelector('.age') ? document.querySelector('.age').innerText : false; 
-  const date = card.querySelector('.date') ? document.querySelector('.date').innerText : false; 
-  return {id, doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
+  const pressure = card.querySelector('.pressure') ? card.querySelector('.pressure').innerText : ''; 
+  const bodyWeight = card.querySelector('.bodyWeight') ? card.querySelector('.bodyWeight').innerText : '';   
+  const illnesses = card.querySelector('.illnesses') ? card.querySelector('.illnesses').innerText : ''; 
+  const age = card.querySelector('.age') ? card.querySelector('.age').innerText : ''; 
+  const date = card.querySelector('.date') ? card.querySelector('.date').innerText : ''; 
+  return {key, doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
 }
 
-// document.body.closest
+function changeExistAppoin() {
+  const key = document.querySelector('#modalCreate').dataset.id;
+  const data = getDataFromModal();
+  const objData = {
+    key,
+    data,
+  }
+  putCard(objData)
+  new Modal().closeModal();
+}
+
+function editCardInHtml(data) {
+  if(data.doctor === 'Cardiologist') {
+    const card = new CardCardiologist(data);
+    card.editCardCommon();
+    card.renderHtml();
+  };
+  if(data.doctor === 'Dentist') {
+    const card = new CardDentist(data);
+    card.editCardCommon();
+    card.renderHtml();
+  };
+  if(data.doctor === 'Therapist') {
+    const card = new CardTherapist(data);
+    card.editCardCommon();
+    card.renderHtml();
+  }; 
+  addEventsOnCards(data.key);
+}
 
