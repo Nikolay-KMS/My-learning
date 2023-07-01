@@ -24,7 +24,7 @@ class Cards {
             <button class="more border-2 rounded bg-violet-950 py-1 px-2">Show more</button>
             <button class="changeVisit border-2 rounded bg-violet-950 py-1 px-2">Change visit</button>
           </div>       
-          <div class="deleteCard cursor-pointer">
+          <div class="deleteCard cursor-pointer h-fit">
             <div class="bg-red-600 w-5 h-0.5 rotate-45 translate-y-0.5 "></div>
             <div class="bg-red-600 w-5 h-0.5 -rotate-45"></div>
           </div>

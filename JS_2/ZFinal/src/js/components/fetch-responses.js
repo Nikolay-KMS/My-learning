@@ -61,7 +61,6 @@ async function deleteCard(dataKey) {
   .then(res => {
     document.getElementById(res).remove();
   })
-
 };
 
 // const obj = {
