@@ -57,8 +57,8 @@
 <main class="">
   <div class="form bg-slate-600 max-w-fit mt-12 mx-auto text-xl px-9 py-2 rounded-md mb-8">
     <div class="wrap rounded-md inline-block border">
-      <button id="btnFind">Find</button>
-      <input type="text" id="inputFind" class="bg-slate-600 rounded-md min-w-[400px]">
+      <input type="text" id="inputFind" class="bg-slate-600 rounded-md min-w-[400px] border">
+      <button id="btnFind" class="px-3 bg-slate-500 rounded-md hover:bg-slate-400 border">Find</button>
     </div>
     <select name="state" id="findState" class="bg-slate-600 cursor-pointer">
       <option disabled selected class="">State</option>
@@ -78,10 +78,16 @@
     <div id="modalEnterWindow" class="bg-emerald-950 min-h-[200px] w-1/2 mt-24 rounded-3xl mx-auto">
       <div class="mx-auto w-fit pt-12 space-y-5">
         <label for="enterEmail" class="mx-auto"> Type your email
-          <input required id="inpModelEmail" type="email" placeholder="Write email" class="bg-sky-200 text-orange-950 rounded pl-3">
+          <input required id="inpModelEmail" type="email" class="bg-sky-200 text-orange-950
+            rounded pl-3 peer ...">
+          <p class="mt-2 invisible h-0 peer-invalid:visible peer-invalid:h-6 text-pink-600 
+            text-sm"> Please provide a valid email address.
+          </p>
         </label>
-        <label for="enterPassword" class="block "> Type your email
-          <input id="inpModelPassword" type="password" placeholder="Write pas" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <label for="enterPassword" class="block"> Type your email
+          <input id="inpModelPassword" type="password" class="bg-sky-200 text-orange-950 rounded pl-3">
+          <p id="inpModelPasswordflag" class="mt-2 mb-5 h-0 text-pink-600 invisible text-sm">
+            Password min length - 4 signs</p>
         </label>
         <button id="btnModelLogIn" class="ml-32 border rounded px-4 py-2">Send</button>
       </div>
@@ -110,7 +116,7 @@
           <input id="nameCreate" required type="text" placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
         </label>
         <label for="targetCreate" class="block "> Type your target
-          <input id="targetCreate" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
+          <input id="targetCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
         </label>
         <label for="descriptionCreate" class="block "> Type your description
           <input id="descriptionCreate" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
@@ -126,13 +132,16 @@
         </label>
 
         </div>     
-        <div class="flex justify-between pb-4">
-          <button id="btnModelCreate" type="submit" class="mx-1 border rounded px-4 py-2 bg-emerald-800">Send</button>
-          <button id="btnModelClose" class="mx-1 border rounded px-4 py-2 text-yellow-400 bg-red-800">Close</button>
+        <div class="pb-4">
+          <p id="btnModelCreateTooltip" class=" h-0 text-pink-600 invisible text-sm">
+            You need to fil in all feids</p>
+          <button id="btnModelCreate" class="mx-1 border rounded px-4 py-2
+            bg-emerald-800 hover:bg-slate-800 cursor-pointer">Send</button>
         </div>
       </form>
     </div>
   </div> -->
+
 
   <div id="cork">
     <p class="text-center text-2xl mt-20">No items have been added.</p>

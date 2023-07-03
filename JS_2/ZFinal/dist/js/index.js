@@ -19,10 +19,12 @@
               <option value="Therapist">Therapist</option>
             </select>
             <div id="inputs" class="space-y-5"> 
-
             </div>     
-            <div class="flex justify-between pb-4">
-              <button  id="btnModelCreate" type="submit" class="mx-1 border rounded px-4 py-2 bg-emerald-800">Create</button>
+            <div class="pb-4">
+              <p id="btnModelCreateTooltip" class=" h-0 text-pink-600 invisible text-sm">
+                You need to fil in all feids</p>
+              <button id="btnModelCreate" class="mx-1 border rounded px-4 py-2
+                bg-emerald-800 hover:bg-slate-800 cursor-pointer">Send</button>
             </div>
           </form>
         </div>
@@ -31,37 +33,7 @@
   }
   closeModal() {        // грохнути модалку
     document.querySelector('#modalCreate').remove();
-  }
-  editModal(id) {           // намалювати модалку в ХТМЛ, при зміні даних
-    document.querySelector('main').insertAdjacentHTML("beforeend", 
-      `<div id="modalCreate" class=" bg-opacity-50 w-full top-0 bottom-0 fixed bg-black">
-        <div id="modalCreateWindow" class="bg-emerald-950 min-h-[200px] w-1/2 mt-24 rounded-3xl mx-auto">
-          <div class="flex justify-between border-b-2">
-            <h2 class=" pl-5 py-4 uppercase text-xl">Create an appointment</h2>
-            <div id="btnModelClose" class="flex items-center pr-2 cursor-pointer">
-              <div class="bg-red-500 w-8 h-0.5 -rotate-45"></div>
-              <div class="bg-red-500 w-8 h-0.5 rotate-45 absolute"></div>
-            </div>
-          </div>          
-          <div id="modalCreateInputs" class="mx-auto w-fit pt-4 space-y-5">
-            <select name="chooseDoctor" id="chooseDoctor" class="bg-yellow-200 rounded text-slate-900 px-3">
-              <option disabled selected value="" class="">Choose a doctor</option>
-              <option value="Cardiologist">Cardiologist</option>
-              <option value="Dentist">Dentist</option>
-              <option value="Therapist">Therapist</option>
-            </select>
-            <div id="inputs" class="space-y-5"> 
-
-            </div>     
-            <div class="flex justify-between pb-4">
-              <button  id="btnModelChange" class="mx-1 border rounded px-4 py-2 bg-emerald-800">Change</button>
-            </div>
-          </div>
-        </div>
-      </div>`
-    );
-    document.querySelector('#modalCreate').dataset.id = id;
-  }          // а це напевно костиль. для передачі АйДи
+  }  
 }
 
 
@@ -81,13 +53,13 @@ class Visit {
   renderCommon() {            // намалювати в модалці "загальні" інпути
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="nameCreate" class="mx-auto mt-2 block"> Type your First & Last Name
-        <input id="nameCreate" type="text" required placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="nameCreate" type="text" placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="targetCreate" class="block "> Type your target
-        <input id="targetCreate" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="targetCreate" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="descriptionCreate" class="block "> Type your description
-        <input id="descriptionCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="descriptionCreate" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <select name="stateCreate" id="stateCreate" class="bg-yellow-200 text-slate-900 cursor-pointer px-4 rounded">
         <option disabled selected class="">Urgency</option>
@@ -100,26 +72,12 @@ class Visit {
     document.querySelector('#inputs').innerHTML = '';
   }
 
-  editCommon() {              // намалювати в модалці "загальні" інпути, при зміні карточки
-    document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
-      <label for="nameCreate" class="mx-auto mt-2 block"> Type your First & Last Name
-        <input id="nameCreate" type="text" required placeholder="Name" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.name}>
-      </label>
-      <label for="targetCreate" class="block "> Type your target
-        <input id="targetCreate" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.target}>
-      </label>
-      <label for="descriptionCreate" class="block "> Type your description
-        <input id="descriptionCreate" required type="text" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.description}>
-      </label>
-      <select name="stateCreate" id="stateCreate" class="bg-yellow-200 text-slate-900 cursor-pointer px-4 rounded">
-        <option disabled selected class="">Urgency</option>
-        <option value="High" class="">High</option>
-        <option value="Normal" class="">Normal</option>
-        <option value="Low" class="">Low</option>
-      </select> `
-    )
+  editCommon() {              // вписати в інпути модалки "загальні дані" , при зміні карточки
     document.querySelector('#chooseDoctor').value = this.doctor;   // вписати в Селект значення
     document.querySelector('#stateCreate').value = this.state;     // вписати в Селект значення  
+    document.querySelector('#nameCreate').value = this.name;      // вписати в Інпут значення
+    document.querySelector('#targetCreate').value = this.target; 
+    document.querySelector('#descriptionCreate').value = this.description; 
   }
 }
 
@@ -127,34 +85,24 @@ class VisitCardiologist extends Visit {
   renderExtends() {          // намалювати в модалці інпути для конкретного лікаря
     document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
       <label for="pressure" class="block "> Pressure
-        <input id="pressure" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="pressure" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="bodyWeight" class="block "> Body weight
-        <input id="bodyWeight" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="bodyWeight" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="illnesses" class="block "> Past illnesses
-        <input id="illnesses" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="illnesses" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label>
       <label for="age" class="block "> Age
-        <input id="age" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3">
+        <input id="age" type="text" class="bg-sky-200 text-orange-950 rounded pl-3">
       </label> `
     )
   }
-  editExtends() {         // намалювати в модалці інпути для конкретного лікаря, при зміні даних
-    document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
-      <label for="pressure" class="block "> Pressure
-        <input id="pressure" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.pressure}>
-      </label>
-      <label for="bodyWeight" class="block "> Body weight
-        <input id="bodyWeight" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.bodyWeight}>
-      </label>
-      <label for="illnesses" class="block "> Past illnesses
-        <input id="illnesses" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.illnesses}>
-      </label>
-      <label for="age" class="block "> Age
-        <input id="age" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.age}>
-      </label> `
-    )
+  editExtends() {         // вписати в інпути модалки дані для конкретного лікаря, при зміні даних
+    document.querySelector('#pressure').value = this.pressure; 
+    document.querySelector('#bodyWeight').value = this.bodyWeight; 
+    document.querySelector('#illnesses').value = this.illnesses; 
+    document.querySelector('#age').value = this.age; 
   }
 }
 
@@ -166,12 +114,8 @@ class VisitDentist extends Visit {
       </label> `
       )
   }
-  editExtends() {
-    document.querySelector('#inputs').insertAdjacentHTML('beforeend', ` 
-    <label for="dateCreate" class="block "> Type date of last appointment
-      <input id="dateCreate" required type="date" class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.date}>
-    </label> `
-    )    
+  editExtends() {    
+    document.querySelector('#dateCreate').value = this.date; 
   }
 }
 
@@ -184,11 +128,7 @@ class VisitTherapist extends Visit {
     )
   }
   editExtends() {
-    document.querySelector('#inputs').insertAdjacentHTML('beforeend', `
-      <label for="age" class="block "> Age
-        <input id="age" type="text" required class="bg-sky-200 text-orange-950 rounded pl-3" value=${this.age}>
-      </label> `
-    )    
+    document.querySelector('#age').value = this.age;     
   }
 }
 
@@ -254,21 +194,45 @@ async function deleteCard(dataKey) {
   })
 };
 
-                    
+
 // const obj = {        // наступні 5 абзаців для тестування. Щоб не трогати Ендпоинт (pipedream)
-//   78: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
-//     age: false, 
+//   1: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
+//     age: false,
 //     bodyWeight: false,
-//     date:"2023-06-14",
+//     date: "2023-06-14",
 //     description: "description1",
-//     doctor:"Dentist",
-//     illnesses : false,
-//     name :"name1",
-//     pressure :  false,
-//     state : "Normal",
-//     target  :  "target1",
+//     doctor: "Dentist",
+//     illnesses: false,
+//     name: "name1",
+//     pressure: false,
+//     state: "Normal",
+//     target: "target1",
 //   },
-//   27: {
+//   2: {
+//     age: "age2",
+//     bodyWeight: false,
+//     date: false,
+//     description: "description2",
+//     doctor: "Therapist",
+//     illnesses: false,
+//     name: "name2",
+//     pressure: false,
+//     state: "High",
+//     target: "target2",
+//   },
+//   3: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
+//     age: false,
+//     bodyWeight: false,
+//     date: "2023-06-14",
+//     description: "description1",
+//     doctor: "Dentist",
+//     illnesses: false,
+//     name: "name1",
+//     pressure: false,
+//     state: "Normal",
+//     target: "target1",
+//   },
+//   4: {
 //     age: "age2",
 //     bodyWeight: false,
 //     date: false,
@@ -282,18 +246,18 @@ async function deleteCard(dataKey) {
 //   }
 // }
 
-// function postCard({key, ...data}) { 
-//   addCardToHtml({key, ...data.data});
+// function postCard({ key, ...data }) {
+//   addCardToHtml({ key, ...data.data });
 // };
 
 // function getCards() {
-//   const arrCards = Object.entries(obj); 
-//   arrCards.forEach(elem => addCardToHtml({key:elem[0], ...elem[1]}));
+//   const arrCards = Object.entries(obj);
+//   arrCards.forEach(elem => addCardToHtml({ key: elem[0], ...elem[1] }));
 //   checkCork();
 // };
 
-// async function putCard({key, ...data}) {
-//   editCardInHtml({key, ...data.data})
+// async function putCard({ key, ...data }) {
+//   editCardInHtml({ key, ...data.data })
 // }
 
 // async function deleteCard(dataKey) {
@@ -401,44 +365,65 @@ class CardTherapist extends Cards {
   }
 }
 
-document.querySelector('#btnFind').addEventListener('click', filterCards);
+document.querySelector('#btnFind').addEventListener('click', filterAll);
+document.querySelector('#inputFind').addEventListener('keyup', mainInputFind);
 
-function filterCards() {  
- const arrCard = document.querySelectorAll('.card');
- let valInput = document.querySelector('#inputFind').value;
- const valState = document.querySelector('#findState').value;
- const valUrgencyFilter = document.querySelector('#findUrgency').value;
- if(valInput === '') valInput = null;
+function mainInputFind() {
+  (event.code === 'Enter') ? filterAll() : false;
+}
 
- if (valInput === null && valState === 'State' && valUrgencyFilter === 'Urgency') {
+document.querySelector('#findUrgency').addEventListener('change', filterAll);
+document.querySelector('#findState').addEventListener('change', filterAll)
+
+function openAllCards(arrCard) {
   arrCard.forEach(card => {
     if(card.classList.contains('hidden')) {
       card.classList.remove('hidden');
     };
   });
-  return
- };
-
- arrCard.forEach(card => {
-  if(card.classList.contains('hidden')) {
-    card.classList.remove('hidden');
-  };
-
-  const valTarget = card.querySelector('.target').innerText;
-  const valDescription = card.querySelector('.description').innerText;
-  const valUrgency = card.querySelector('.urgency').innerText;
-  let isCardOnen = 'Open';
-  if(card.querySelector('.date')) {
-    const dateNow = new Date();
-    const dateCard = card.querySelector('.date');
-    isCardOnen = dateCard >= dateNow ? 'Open' : 'Done';
-  }
-
-  if(valTarget.includes(valInput) || valDescription.includes(valInput) || 
-  valState === isCardOnen || valUrgency === valUrgencyFilter) return;
-  card.classList.add('hidden');
- })
 }
+
+function filterAll() {
+  const arrCard = document.querySelectorAll('.card');
+  openAllCards(arrCard);
+  closeCardsByUrgency(arrCard);
+  closeCardsByState(arrCard);
+  closeCardsByInput(arrCard);
+}
+
+function closeCardsByUrgency(arrCard) {
+  const valUrgencyFilter = document.querySelector('#findUrgency').value;
+  if(valUrgencyFilter === 'Urgency') return;
+  arrCard.forEach(card => {
+    if(card.querySelector('.urgency').innerText !== valUrgencyFilter) {
+      card.classList.add('hidden');
+    };
+  });  
+}
+
+function closeCardsByState(arrCard) {  
+  const valStateFilter = document.querySelector('#findState').value;
+  if(valStateFilter === 'State') return;
+   arrCard.forEach(card => {
+    let dateNow = new Date();
+    dateNow = dateNow.toISOString().slice(0,10)
+    const cardState = (!card.querySelector('.date')) ? 'Open' : 
+      (dateNow >= card.querySelector('.date').innerText) ? 'Done' : 'Open';
+    (cardState !== valStateFilter) ? card.classList.add('hidden') : false;
+  });  
+}
+
+function closeCardsByInput(arrCard) {
+  let valInput = document.querySelector('#inputFind').value;
+  arrCard.forEach(card => {
+    const valTarget = card.querySelector('.target').innerText;
+    const valDescription = card.querySelector('.description').innerText;
+    if(!valTarget.includes(valInput) && !valDescription.includes(valInput)) {
+      card.classList.add('hidden');
+    };
+  });  
+}
+
 "use strict"
 
 document.querySelector('#logIn').addEventListener('click', logIn);
@@ -448,28 +433,36 @@ function logIn() {                    // модалка з логіном
   modal.classList.remove('hidden');
   document.querySelector('#btnModelLogIn').addEventListener('click', btnModelLogIn);
   modal.addEventListener('click', clickOutModel);
+  document.addEventListener('keyup', modelLogInKeyEvent);
 }
 
-function btnModelLogIn() {                  // примітивна перевірка логіна і пар.
-  const email = 'email';
-  const password = 'pas';
-  const inpModelEmail = document.querySelector('#inpModelEmail');
-  const inpModelPassword = document.querySelector('#inpModelPassword');
+function btnModelLogIn() {                  // Івент на кнопку Сенд
+  const inpModelEmail = document.querySelector('#inpModelEmail').value;
+  const inpModelPassword = document.querySelector('#inpModelPassword').value;
 
-  if(inpModelEmail.value === email && inpModelPassword.value === password) {
+  (inpModelPassword.length < 4) ?             // примітивна перевірка пар.
+    document.querySelector('#inpModelPasswordflag').classList.remove('invisible') :
+    document.querySelector('#inpModelPasswordflag').classList.add('invisible')
+                                      // примітивна перевірка логіна і пар.
+  if (inpModelEmail.includes('@') && inpModelPassword.length >= 4) {
     document.querySelector('#logIn').classList.add('hidden');
     document.querySelector('#logIn').removeEventListener('click', logIn);
     document.querySelector('#createAppoin').classList.remove('hidden');
     hideLogInModel();
     document.querySelector('#btnModelLogIn').removeEventListener('click', btnModelLogIn);
+    document.removeEventListener('keyup', modelLogInKeyEvent);
     getCards();
   }
 }
 
-getCards();              // розкоменутвати щоб не вводити пароль))
+function modelLogInKeyEvent() {                  // Івент на кнопку Enter
+  if (event.code === 'Enter') btnModelLogIn();
+}
+
+// getCards();              // розкоменутвати щоб не вводити пароль))
 
 function clickOutModel() {               // якщо тикнули мимо модалки
-  if(event.target.closest('#modalEnterWindow')) return;
+  if (event.target.closest('#modalEnterWindow')) return;
   hideLogInModel();
 }
 
@@ -478,67 +471,113 @@ function hideLogInModel() {
   modal.classList.add('hidden');
 }
 
-function checkCork() {             // якщо є карточки, то прибипаємо плашку
+function checkCork() {             // якщо є карточки, то прибираємо плашку
   const cork = document.querySelector('#cork');
-  (!(document.querySelector('#cards').innerHTML == false)) ? cork.classList.add('hidden') :cork.classList.remove('hidden');
+  (!(document.querySelector('#cards').innerHTML == false)) ? cork.classList.add('hidden') : cork.classList.remove('hidden');
 }
 
 document.querySelector('#createAppoin').addEventListener('click', loadModalCreate);
 
 function loadModalCreate() {             // модалка для створення карток
+  if (document.querySelector('#modalCreate')) return;
   new Modal().renderModal();
   document.querySelector('#chooseDoctor').addEventListener('change', changeDoctor);
   new Visit().renderCommon();
   document.querySelector('#btnModelClose').addEventListener('click', closeModalCreate);
-  document.querySelector('#btnModelCreate').addEventListener('click', createNewAppoin);
+  document.querySelector('#btnModelCreate').addEventListener('click', (event)=> createNewAppoin(event));
+  document.addEventListener('keyup', (event)=> loadModalCreateKeyEvent(event))
+}
+
+function loadModalCreateKeyEvent(event) {
+  (event.code === 'Enter') ? createNewAppoin(event) : false;
 }
 
 function closeModalCreate() {                 // закриття модалки
   new Modal().closeModal();
+  document.removeEventListener('keyup', keyEventСhangeExistAppoin);
+  document.removeEventListener('keyup', (event)=> loadModalCreateKeyEvent(event));
 }
 
 function changeDoctor() {                    // Селект зміни лікаря
   const doctor = document.querySelector('#chooseDoctor').value;
   const data = getDataFromModal();
   new Visit().deleteInputs();
-  if(doctor === 'Cardiologist') {
+  if (doctor === 'Cardiologist') {
     const visit = new VisitCardiologist(data);
     visit.renderCommon();
-    visit.renderExtends()  
+    visit.renderExtends()
   };
-  if(doctor === 'Dentist') {
+  if (doctor === 'Dentist') {
     const visit = new VisitDentist(data);
     visit.renderCommon();
-    visit.renderExtends() 
+    visit.renderExtends()
   };
-  if(doctor === 'Therapist'){
+  if (doctor === 'Therapist') {
     const visit = new VisitTherapist(data);
     visit.renderCommon();
-    visit.renderExtends() 
-  };  
+    visit.renderExtends()
+  };
 }
 
-function createNewAppoin() {                    // кнопка Створити
+function createNewAppoin(event) {                    // кнопка Створити
+  if(!document.querySelector('#modalCreate')) {
+    return
+  };
+  event.preventDefault();
+  if(!checkFillAllInputs()) return;
   const data = getDataFromModal();
-  new Modal().closeModal();
+  closeModalCreate();
   const key = getNewId();
-  const objData = { key, data, }
+  const objData = { key, data }
   postCard(objData);
 }
 
+function checkFillAllInputs() {
+  const data = getDataFromModal()
+  if(data.doctor === '' || data.name === '' || data.target === '' || data.description === '' || 
+    data.state === 'Urgency') {
+    showTooltip();
+    return
+  } 
+  if(data.doctor === 'Cardiologist') {
+    if(data.pressure === '' || data.bodyWeight === '' || data.illnesses === '' || 
+      data.age === '') {    
+      showTooltip();
+      return
+    }
+  } 
+  if(data.doctor === 'Dentist') {
+    if(data.date === '') {    
+      showTooltip();
+      return
+    }
+  } 
+  if(data.doctor === 'Therapist') {
+    if(data.age === '') {    
+      showTooltip();
+      return
+    }
+  }   
+  return true;
+}
+
+function showTooltip() {
+  document.querySelector('#btnModelCreateTooltip').classList.add('h-5', 'mb-2');
+  document.querySelector('#btnModelCreateTooltip').classList.remove('invisible');
+}
+
 function getDataFromModal() {                      // беру введені дані з модалки
-  const doctor = document.querySelector('#chooseDoctor').value;
-  const name = document.querySelector('#nameCreate').value;
-  const target = document.querySelector('#targetCreate').value;
-  const description = document.querySelector('#descriptionCreate').value;
-  const state = document.querySelector('#stateCreate').value;  
-    
-  const pressure = (document.querySelector('#pressure')) ? document.querySelector('#pressure').value : false; 
-  const bodyWeight = document.querySelector('#bodyWeight') ? document.querySelector('#bodyWeight').value : false;   
-  const illnesses = document.querySelector('#illnesses') ? document.querySelector('#illnesses').value : false; 
-  const age = document.querySelector('#age') ? document.querySelector('#age').value : false; 
-  const date = document.querySelector('#dateCreate') ? document.querySelector('#dateCreate').value : false; 
-  return {doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
+  const doctor = document.querySelector('#chooseDoctor') ? document.querySelector('#chooseDoctor').value : '';
+  const name = document.querySelector('#nameCreate') ? document.querySelector('#nameCreate').value : '';
+  const target = document.querySelector('#targetCreate') ? document.querySelector('#targetCreate').value : '';
+  const description = document.querySelector('#descriptionCreate') ? document.querySelector('#descriptionCreate').value : '';
+  const state = document.querySelector('#stateCreate') ? document.querySelector('#stateCreate').value : '';
+  const pressure = document.querySelector('#pressure') ? document.querySelector('#pressure').value : '';
+  const bodyWeight = document.querySelector('#bodyWeight') ? document.querySelector('#bodyWeight').value : '';
+  const illnesses = document.querySelector('#illnesses') ? document.querySelector('#illnesses').value : '';
+  const age = document.querySelector('#age') ? document.querySelector('#age').value : '';
+  const date = document.querySelector('#dateCreate') ? document.querySelector('#dateCreate').value : '';
+  return { doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date }
 }
 
 function getNewId() {                      // присвоюю новий АйДи
@@ -549,85 +588,102 @@ function getNewId() {                      // присвоюю новий АйД
 
 function createNewId(arrId) {
   const newId = createNumber();
-  if(arrId.includes(newId)) createNewId(arrId);
+  if (arrId.includes(newId)) createNewId(arrId);
   return newId;
 }
 
 function createNumber() {
-  return Math.round(Math.random()*100);
+  return Math.round(Math.random() * 100);
 }
 
 function addCardToHtml(data) {               // добавляю карту в НТМЛ
-  if(data.doctor === 'Cardiologist') {
+  if (data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.renderHtmlCommon();
     card.renderHtml();
   };
-  if(data.doctor === 'Dentist') {
+  if (data.doctor === 'Dentist') {
     const card = new CardDentist(data);
     card.renderHtmlCommon();
     card.renderHtml();
   };
-  if(data.doctor === 'Therapist') {
+  if (data.doctor === 'Therapist') {
     const card = new CardTherapist(data);
     card.renderHtmlCommon();
     card.renderHtml();
-  }; 
+  };
   addEventsOnCards(data.key)
 }
 
-function addEventsOnCards(id) {                 // добавляю для карти Івенту
-  console.log(id);
-  document.getElementById (id).querySelector('.more')
-  .addEventListener('click', btnMore);
-document.getElementById (id).querySelector('.changeVisit')
-  .addEventListener('click', btnChangeVisit);
-  document.getElementById (id).querySelector('.deleteCard')
-  .addEventListener('click', btnDeleteCard);
+function addEventsOnCards(id) {                 // добавляю Івенти для карти 
+  document.getElementById(id).querySelector('.more')
+    .addEventListener('click', btnMore);
+  document.getElementById(id).querySelector('.changeVisit')
+    .addEventListener('click', btnChangeVisit);
+  document.getElementById(id).querySelector('.deleteCard')
+    .addEventListener('click', btnDeleteCard);
 }
 
 document.querySelectorAll('.card .more').forEach(btn => btn.addEventListener('click', btnMore));
-document.querySelectorAll('.card .changeVisit').forEach(btn => btn.addEventListener('click',btnChangeVisit));
-document.querySelectorAll('.card .deleteCard').forEach(btn => btn.addEventListener('click',btnDeleteCard));
+document.querySelectorAll('.card .changeVisit')
+  .forEach(btn => btn.addEventListener('click', btnChangeVisit));
+document.querySelectorAll('.card .deleteCard')
+  .forEach(btn => btn.addEventListener('click', btnDeleteCard));
 
 function btnMore() {                   // кнопка - більше інфо
   const card = event.target.closest('.card');
-  card.querySelector('.extended').classList.remove('hidden');
-  card.querySelector('.more').classList.add('hidden');
+  card.querySelector('.extended').classList.toggle('hidden');
+  card.querySelector('.extended').classList.contains('hidden') ?
+    event.target.innerText = 'Show more' : event.target.innerText = 'Show less';
 }
 
 function btnChangeVisit() {                    // кнопка змінити
+  if (document.querySelector('#modalCreate')) return;    // якщо модалка вже відкрита, то виходимо
   const id = event.target.closest('.card').id;
-  new Modal().editModal(id);
-  changeModalInputs();
-  document.querySelector('#chooseDoctor').addEventListener('change', changeModalInputs);
+  new Modal().renderModal(id);
+  document.querySelector('#btnModelCreate').innerText = 'Change';
+  changeModalInputs(id);
+  document.querySelector('#chooseDoctor').addEventListener('change', ()=> changeModalInputs(id));
 }
 
-function changeModalInputs() {                     // зміна картки
-  const id = document.querySelector('#modalCreate').dataset.id;
+function changeModalInputs(id) {                     // зміна картки
   const card = document.getElementById(id);
   const data = getDataFromHtml(card);
   const doctor = document.querySelector('#chooseDoctor').value;
-  if(doctor !== '')   data.doctor = doctor;
+  if (doctor !== '') {
+    data.doctor = doctor
+  }
   new Visit().deleteInputs();
 
-  if(data.doctor === 'Cardiologist') {
+  if (data.doctor === 'Cardiologist') {
     const visit = new VisitCardiologist(data);
+    visit.renderCommon();
     visit.editCommon();
+    visit.renderExtends();
     visit.editExtends();
   };
-  if(data.doctor === 'Dentist') {
+  if (data.doctor === 'Dentist') {
     const visit = new VisitDentist(data);
+    visit.renderCommon();
     visit.editCommon();
+    visit.renderExtends();
     visit.editExtends();
   };
-  if(data.doctor === 'Therapist') {
+  if (data.doctor === 'Therapist') {
     const visit = new VisitTherapist(data);
+    visit.renderCommon();
     visit.editCommon();
+    visit.renderExtends();
     visit.editExtends();
-  }; 
+  };
   document.querySelector('#btnModelClose').addEventListener('click', closeModalCreate);
-  document.querySelector('#btnModelChange').addEventListener('click', changeExistAppoin);
+  document.querySelector('#btnModelCreate').addEventListener('click', ()=> changeExistAppoin(id));
+  document.addEventListener('keyup', ()=> keyEventСhangeExistAppoin(id));
+}
+
+function keyEventСhangeExistAppoin(id) {                         // Івенти для кнопок
+  if (event.code === 'Escape') closeModalCreate();
+  if (event.code === 'Enter') ()=> changeExistAppoin(id);
 }
 
 function btnDeleteCard() {                     // кнопка грохнути картку
@@ -642,43 +698,44 @@ function getDataFromHtml(card) {                     // зчитати всі д
   const name = card.querySelector('.name').innerText;
   const target = card.querySelector('.target').innerText;
   const description = card.querySelector('.description').innerText;
-  const state = card.querySelector('.urgency').innerText;  
-    
-  const pressure = card.querySelector('.pressure') ? card.querySelector('.pressure').innerText : ''; 
-  const bodyWeight = card.querySelector('.bodyWeight') ? card.querySelector('.bodyWeight').innerText : '';   
-  const illnesses = card.querySelector('.illnesses') ? card.querySelector('.illnesses').innerText : ''; 
-  const age = card.querySelector('.age') ? card.querySelector('.age').innerText : ''; 
-  const date = card.querySelector('.date') ? card.querySelector('.date').innerText : ''; 
-  return {key, doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date}
+  const state = card.querySelector('.urgency').innerText;
+
+  const pressure = card.querySelector('.pressure') ? card.querySelector('.pressure').innerText : '';
+  const bodyWeight = card.querySelector('.bodyWeight') ? card.querySelector('.bodyWeight').innerText : '';
+  const illnesses = card.querySelector('.illnesses') ? card.querySelector('.illnesses').innerText : '';
+  const age = card.querySelector('.age') ? card.querySelector('.age').innerText : '';
+  const date = card.querySelector('.date') ? card.querySelector('.date').innerText : '';
+  return { key, doctor, name, target, description, state, pressure, bodyWeight, illnesses, age, date }
 }
 
-function changeExistAppoin() {                     // зпуск зміни картки
-  const key = document.querySelector('#modalCreate').dataset.id;
+function changeExistAppoin(key) {                     // запуск зміни картки
+  event.preventDefault();
+  if(!checkFillAllInputs()) return;
   const data = getDataFromModal();
   const objData = {
     key,
     data,
   }
   putCard(objData)
-  new Modal().closeModal();
+  closeModalCreate();
 }
 
 function editCardInHtml(data) {                  //  добавити в ХТМЛ змінену картку
-  if(data.doctor === 'Cardiologist') {
+  if (data.doctor === 'Cardiologist') {
     const card = new CardCardiologist(data);
     card.editCardCommon();
     card.renderHtml();
   };
-  if(data.doctor === 'Dentist') {
+  if (data.doctor === 'Dentist') {
     const card = new CardDentist(data);
     card.editCardCommon();
     card.renderHtml();
   };
-  if(data.doctor === 'Therapist') {
+  if (data.doctor === 'Therapist') {
     const card = new CardTherapist(data);
     card.editCardCommon();
     card.renderHtml();
-  }; 
+  };
   addEventsOnCards(data.key);
 }
 

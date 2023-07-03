@@ -1,39 +1,59 @@
 
-document.querySelector('#btnFind').addEventListener('click', filterCards);
+document.querySelector('#btnFind').addEventListener('click', filterAll);
+document.querySelector('#inputFind').addEventListener('keyup', mainInputFind);
 
-function filterCards() {  
- const arrCard = document.querySelectorAll('.card');
- let valInput = document.querySelector('#inputFind').value;
- const valState = document.querySelector('#findState').value;
- const valUrgencyFilter = document.querySelector('#findUrgency').value;
- if(valInput === '') valInput = null;
+function mainInputFind() {
+  (event.code === 'Enter') ? filterAll() : false;
+}
 
- if (valInput === null && valState === 'State' && valUrgencyFilter === 'Urgency') {
+document.querySelector('#findUrgency').addEventListener('change', filterAll);
+document.querySelector('#findState').addEventListener('change', filterAll)
+
+function openAllCards(arrCard) {
   arrCard.forEach(card => {
     if(card.classList.contains('hidden')) {
       card.classList.remove('hidden');
     };
   });
-  return
- };
+}
 
- arrCard.forEach(card => {
-  if(card.classList.contains('hidden')) {
-    card.classList.remove('hidden');
-  };
+function filterAll() {
+  const arrCard = document.querySelectorAll('.card');
+  openAllCards(arrCard);
+  closeCardsByUrgency(arrCard);
+  closeCardsByState(arrCard);
+  closeCardsByInput(arrCard);
+}
 
-  const valTarget = card.querySelector('.target').innerText;
-  const valDescription = card.querySelector('.description').innerText;
-  const valUrgency = card.querySelector('.urgency').innerText;
-  let isCardOnen = 'Open';
-  if(card.querySelector('.date')) {
-    const dateNow = new Date();
-    const dateCard = card.querySelector('.date');
-    isCardOnen = dateCard >= dateNow ? 'Open' : 'Done';
-  }
+function closeCardsByUrgency(arrCard) {
+  const valUrgencyFilter = document.querySelector('#findUrgency').value;
+  if(valUrgencyFilter === 'Urgency') return;
+  arrCard.forEach(card => {
+    if(card.querySelector('.urgency').innerText !== valUrgencyFilter) {
+      card.classList.add('hidden');
+    };
+  });  
+}
 
-  if(valTarget.includes(valInput) || valDescription.includes(valInput) || 
-  valState === isCardOnen || valUrgency === valUrgencyFilter) return;
-  card.classList.add('hidden');
- })
+function closeCardsByState(arrCard) {  
+  const valStateFilter = document.querySelector('#findState').value;
+  if(valStateFilter === 'State') return;
+   arrCard.forEach(card => {
+    let dateNow = new Date();
+    dateNow = dateNow.toISOString().slice(0,10)
+    const cardState = (!card.querySelector('.date')) ? 'Open' : 
+      (dateNow >= card.querySelector('.date').innerText) ? 'Done' : 'Open';
+    (cardState !== valStateFilter) ? card.classList.add('hidden') : false;
+  });  
+}
+
+function closeCardsByInput(arrCard) {
+  let valInput = document.querySelector('#inputFind').value;
+  arrCard.forEach(card => {
+    const valTarget = card.querySelector('.target').innerText;
+    const valDescription = card.querySelector('.description').innerText;
+    if(!valTarget.includes(valInput) && !valDescription.includes(valInput)) {
+      card.classList.add('hidden');
+    };
+  });  
 }

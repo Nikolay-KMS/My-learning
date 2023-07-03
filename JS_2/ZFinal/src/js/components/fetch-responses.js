@@ -61,21 +61,45 @@ async function deleteCard(dataKey) {
   })
 };
 
-                    
+
 // const obj = {        // наступні 5 абзаців для тестування. Щоб не трогати Ендпоинт (pipedream)
-//   78: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
-//     age: false, 
+//   1: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
+//     age: false,
 //     bodyWeight: false,
-//     date:"2023-06-14",
+//     date: "2023-06-14",
 //     description: "description1",
-//     doctor:"Dentist",
-//     illnesses : false,
-//     name :"name1",
-//     pressure :  false,
-//     state : "Normal",
-//     target  :  "target1",
+//     doctor: "Dentist",
+//     illnesses: false,
+//     name: "name1",
+//     pressure: false,
+//     state: "Normal",
+//     target: "target1",
 //   },
-//   27: {
+//   2: {
+//     age: "age2",
+//     bodyWeight: false,
+//     date: false,
+//     description: "description2",
+//     doctor: "Therapist",
+//     illnesses: false,
+//     name: "name2",
+//     pressure: false,
+//     state: "High",
+//     target: "target2",
+//   },
+//   3: {              // коментуєш попередні 5 абзаців, а ці відкриваєш, і все працює без сервера))
+//     age: false,
+//     bodyWeight: false,
+//     date: "2023-06-14",
+//     description: "description1",
+//     doctor: "Dentist",
+//     illnesses: false,
+//     name: "name1",
+//     pressure: false,
+//     state: "Normal",
+//     target: "target1",
+//   },
+//   4: {
 //     age: "age2",
 //     bodyWeight: false,
 //     date: false,
@@ -89,18 +113,18 @@ async function deleteCard(dataKey) {
 //   }
 // }
 
-// function postCard({key, ...data}) { 
-//   addCardToHtml({key, ...data.data});
+// function postCard({ key, ...data }) {
+//   addCardToHtml({ key, ...data.data });
 // };
 
 // function getCards() {
-//   const arrCards = Object.entries(obj); 
-//   arrCards.forEach(elem => addCardToHtml({key:elem[0], ...elem[1]}));
+//   const arrCards = Object.entries(obj);
+//   arrCards.forEach(elem => addCardToHtml({ key: elem[0], ...elem[1] }));
 //   checkCork();
 // };
 
-// async function putCard({key, ...data}) {
-//   editCardInHtml({key, ...data.data})
+// async function putCard({ key, ...data }) {
+//   editCardInHtml({ key, ...data.data })
 // }
 
 // async function deleteCard(dataKey) {
