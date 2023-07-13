@@ -1,0 +1,163 @@
+
+body {
+  background-color: rgb(253, 250, 224); 
+  // height: fit-content;
+}
+
+.nav {
+  position:fixed;
+  min-height: 50px;
+  top: 0;
+  width: 100%;
+  opacity: 0.95;
+  background-color: #e0e0bd;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
+
+  .iconStar, .iconBasket, .iconStarText, .iconBasketText {
+    cursor: pointer;
+  }
+}
+.icons {
+  display: flex;
+  justify-content: space-between;
+  width: 400px;
+  margin-right: 180px;
+}
+.icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    padding-left: 10px;
+  }
+}
+
+.main {
+  margin-top: 70px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  background-color: rgb(236, 252, 216);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 8px 4px 9px rgb(110, 107, 107, 0.3);
+  border-radius: 5px;
+  .content {
+    text-align: center;
+  }
+  h3 {
+    margin: 1px 1px 10px 1px;
+  }
+}
+
+.card-img {
+  width: 250px;
+}
+
+.card-footer {
+  text-align: right;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-footer .iconStar {
+  cursor: pointer;
+}
+
+button {
+  padding: 5px 10px;
+  border-color: rgb(58, 85, 62);
+  border-radius: 5px;
+  background-color: rgb(203, 223, 177);
+
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(174, 206, 134);
+  }
+}
+
+
+.modal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  // tab
+}
+
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: 3;
+}
+
+.modalWindow {
+  position:fixed;
+  left: calc(50% - 255px);
+  margin-top: 100px;
+  max-width: 510px;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 3;
+
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f9272;
+  padding-left: 20px;
+}
+
+.modalHeader h2 {
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.modalBody {
+  padding: 15px 40px;
+  background-color: #58b18f;
+}
+
+button:not(.btnClose) {
+  min-width: 80px;
+  margin: 0 15px;
+}
+
+.btnClose {
+  align-self:self-start;
+  border: none;
+  background-color: transparent;
+  color: red;
+  padding: 0 0px;
+  font-size: 25px;
+  margin: 5px 10px 0 20px;
+  &:hover {
+    background-color: transparent;
+    color: rgb(207, 7, 0);
+    transform: scale(1.2);
+  }
+}
