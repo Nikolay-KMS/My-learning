@@ -2,7 +2,7 @@ import React from 'react'
 import { IconStar } from './svg/IconStar'
 import { IconBasket } from './svg/IconBasket'
 
-export function Icons(props) {
+export function Icons(props) {  
   return (
     <div className='icons'>
       <div className='icon'>
@@ -27,7 +27,7 @@ export function Icons(props) {
           className='iconBasketText'
           onClick={() => props.handleClickBasket()}
         > 
-          Cart ({props.cardsInBusket.length})
+          Cart ({Object.keys(props.idCardsInBasket).length})
         </p>
       </div>
     </div>

@@ -1,40 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet} from 'react-router-dom'
-import { cardsSelector } from '../../redux/selectors';
-import { pushCards } from '../../redux/actions';
+import { cardsSelector, favouriteSelector, idQuantityBusketSelector } from '../../redux/selectors';
+import { pushCards, pushCardsToBusket, pushCardsToFafourive } from '../../redux/actions';
 
 export function Layout() {
-  // const [cards, setCards]  = useState([]);
-  // const [idFavouriteCards, setidFavouriteCards]  = useState([]);
-  // const [idCardsInBasket, setidCardsInBasket]  = useState([]);
   const cards = useSelector(cardsSelector);
   const dispatch = useDispatch();
+  const idFavouriteCards = useSelector(favouriteSelector);
+  const idQuantityBusket = useSelector(idQuantityBusketSelector)
+
   useEffect(() => {
     fetch("./data.json")
     .then(res => res.json())
     .then(res => {
-      // setCards(res)
-      // localStorage.setItem('allCards', JSON.stringify(res))  
       dispatch(pushCards(res))
-      // console.log(res);
     })
 
-    // const favouriteCardsLocal = JSON.parse(localStorage.getItem('favour'));
-    // setidFavouriteCards(favouriteCardsLocal ? favouriteCardsLocal : [])
+    const favouriteCardsLocal = JSON.parse(localStorage.getItem('favour'));
+    dispatch(pushCardsToFafourive(favouriteCardsLocal));
 
-    // const cardsInBasketLocal= JSON.parse(localStorage.getItem('basket'));
-    // setidCardsInBasket(cardsInBasketLocal ? cardsInBasketLocal : [])
+    const cardsInBasketLocal= JSON.parse(localStorage.getItem('basket'));
+    dispatch(pushCardsToBusket(cardsInBasketLocal))
   }, [])
 
+  useEffect(() => {
+    localStorage.setItem('favour', JSON.stringify(idFavouriteCards));
+  },[idFavouriteCards])
 
-  // useEffect(() => {
-  //   localStorage.setItem("basket", JSON.stringify(idCardsInBasket));
-  // }, [idCardsInBasket])
+  useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(idQuantityBusket));
+  },[idQuantityBusket])
 
-  //   useEffect(() => {
-  //   localStorage.setItem('favour', JSON.stringify(idFavouriteCards)) 
-  // }, [idFavouriteCards])
 
   return (
     <div>
@@ -43,10 +40,7 @@ export function Layout() {
         <NavLink to="favourite">Favourite</NavLink>
         <NavLink to="basket">Your basket</NavLink>
       </div>
-      <Outlet
-        // context={{cards, setCards
-        // }}
-        />
+      <Outlet />
     </div>
   )
 }

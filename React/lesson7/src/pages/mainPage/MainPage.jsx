@@ -1,20 +1,18 @@
 import '../../css/main.css';
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "../../Components/Modal";
 import { Cards } from '../../Components/Cards';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Icons } from '../../Components/Icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCardToBusket, clickOnStar } from '../../redux/actions';
-import { busketSelector, cardsSelector, favouriteSelector } from '../../redux/selectors';
+import { addCardToBusket, clickOnStar, pushCardsToBusket, pushCardsToFafourive } from '../../redux/actions';
+import { busketCardsSelector, cardsSelector, favouriteSelector } from '../../redux/selectors';
 
 export function MainPage() {
   const [isModalFirstActiveID, setIsModalFirstActiveID]  = useState(false);
-  // const {cards}  = useOutletContext();
-  const cards = useSelector(cardsSelector)
 
-  
-  const idCardsInBasket = useSelector(busketSelector);
+  const cards = useSelector(cardsSelector)
+  const cardsInBusket = useSelector(busketCardsSelector);
   const idFavouriteCards = useSelector(favouriteSelector);
   const dispatch = useDispatch();
 
@@ -25,18 +23,16 @@ export function MainPage() {
   }
 
   function handleAddCardToBusket(id) {
-    // setidCardsInBasket([...new Set([id, ...idCardsInBasket])])
     dispatch(addCardToBusket(id))
   }
 
-  // console.log(idCardsInBasket);
   return (
     <div>
       <Icons
         handleClickBasket={() => navigate('basket')}
         handleClickStar={() => navigate('favourite')}
         idFavouriteCards={idFavouriteCards}
-        idCardsInBasket={idCardsInBasket}
+        cardsInBusket={cardsInBusket}
       />
       <div className='main'>
         <h2>Ласкаво просимо до інтернет магазину по продажу самих звичайних поштових марок!</h2>

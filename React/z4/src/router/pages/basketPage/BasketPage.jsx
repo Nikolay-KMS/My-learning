@@ -1,29 +1,25 @@
-import React, { useEffect, useState } from 'react'
 import { BasketCards } from './BasketCards';
-import { Modal } from '../../Components/Modal';
+import { Modal } from '../../../Components/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { busketCardsSelector, cardsSelector } from '../../redux/selectors';
-import { removeCardFromBusket } from '../../redux/actions';
 
 export  function BasketPage() {
-  const [isModalActiveId, setIsModalActiveId]  = useState(false);
-
-  const cards = useSelector(busketCardsSelector);
+  const cards = useSelector(state => state.cards);
+  const idCardsInBasket = useSelector(state => state.idCardsInBasket);
+  const isModalSecondActiveId = useSelector(state => state.isModalSecondActiveId);
   const dispatch = useDispatch();
 
-
   function handleClickDelete(deletedId) {
-    dispatch(removeCardFromBusket(deletedId));
+    dispatch({type: 'REMOVE_CARD_IN_BASKET', payload: {id: deletedId}})
   }
 
   function handleClickModal(id) {
-    setIsModalActiveId(id)
+    dispatch({type: 'PASS_ID_CARD_TO_IS_SECOND_MODAL_ACTIVE', payload: {id: id}})
   }
 
   return (
     <div className='main column'>
       <BasketCards 
-        cards={cards}
+        cards={cards.filter(card => Object.keys(idCardsInBasket).includes(`${card.id}`))}
         handleClickBtn={(id) => {
           handleClickModal(id)
         }}
@@ -31,15 +27,15 @@ export  function BasketPage() {
         isButton={false}
         isCloseButton={true}
       />
-      {isModalActiveId && 
+      {isModalSecondActiveId &&
         < Modal
           headerText={"Do you want to remove this item from your shopping cart?"}
           bodyText={"Do you really want to do it?"}
           handleCloseModal={() => {
-            setIsModalActiveId(false)
+            dispatch({type: 'PASS_FALSE_TO_IS_SECOND_MODAL_ACTIVE'})
           }}
           isCloseButton={true}
-          id={isModalActiveId}
+          id={isModalSecondActiveId}
           handleClickBtn={(id) => handleClickDelete(id)}
         />}
     </div>

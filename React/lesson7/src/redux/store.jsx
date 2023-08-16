@@ -1,12 +1,12 @@
 import {combineReducers, createStore} from 'redux';
 import { idFavouriteCardsReducer } from './reducers/favouriteReducer';
-import { idCardsInBasketReducer } from './reducers/basketReducer';
+import { cardsInBusketReducer } from './reducers/basketReducer';
 import { cardsReducer } from './reducers/cardsReduser';
 
 
 const rootReducer = combineReducers({
   idFavouriteCards: idFavouriteCardsReducer,
-  idCardsInBusket: idCardsInBasketReducer,
+  cardsInBusket: cardsInBusketReducer,
   cards: cardsReducer,
 })
 
