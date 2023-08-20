@@ -45,11 +45,13 @@ export function Modal(props) {
                 handleClickBtn={() => {
                 props.handleClickBtn(props.id)
                 props.handleCloseModal()
-                }}                    
+                }}       
+                className= "modalButton"             
               />
               <Button 
                 text={"Cancel"}
                 handleClickBtn={props.handleCloseModal}
+                className= "modalButton"
               /> 
             </>                         
         </div>

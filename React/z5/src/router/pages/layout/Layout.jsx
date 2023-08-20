@@ -4,8 +4,8 @@ import { NavLink, Outlet} from 'react-router-dom'
 import { getCardsThunk } from '../../../redux/thunk';
 
 export function Layout() {
-  const idFavouriteCards = useSelector(store => store.idFavouriteCards);
-  const idCardsInBasket = useSelector(store => store.idCardsInBasket);
+  const idFavouriteCards = useSelector(store => store.fav.idFavouriteCards);
+  const idCardsInBasket = useSelector(store => store.bask.idCardsInBasket);
   const dispatch = useDispatch();
 
   useEffect(() => {

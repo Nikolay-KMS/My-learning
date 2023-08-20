@@ -2,8 +2,8 @@ import { Cards } from '../../../Components/Cards';
 import { useDispatch, useSelector } from 'react-redux';
 
 export  function FavouritePage() {
-  const cards= useSelector(state => state.cards)
-  const idFavouriteCards = useSelector(state => state.idFavouriteCards)
+  const cards= useSelector(state => state.cards.cards)
+  const idFavouriteCards = useSelector(state => state.fav.idFavouriteCards)
   const dispatch = useDispatch();
 
   function handleClickStar (clickId) {

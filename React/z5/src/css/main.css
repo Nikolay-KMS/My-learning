@@ -143,14 +143,11 @@ body {
   cursor: pointer;
 }
 
-.button {
+.modalButton {
   padding: 5px 10px;
   border-color: rgb(58, 85, 62);
   border-radius: 5px;
   cursor: pointer;
-}
-
-.button:not(.btnClose) {
   min-width: 80px;
   margin: 0 15px;
 }
@@ -168,7 +165,6 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 3;
-
 }
 
 .modalBackFond {

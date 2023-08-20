@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 
 export function Cards(props) {
-  const isCardsLoadind = useSelector(state => state.isCardsLoadind)
+  const isCardsLoadind = useSelector(state => state.cards.isCardsLoadind)
   return (
     <div>
       <div className="cards">   

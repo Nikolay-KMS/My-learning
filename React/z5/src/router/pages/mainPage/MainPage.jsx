@@ -6,10 +6,11 @@ import { Icons } from '../../../Components/Icons';
 import { useDispatch, useSelector } from 'react-redux';
 
 export function MainPage() {
-  const cards = useSelector(state => state.cards);
-  const idFavouriteCards = useSelector(state => state.idFavouriteCards);
-  const idCardsInBasket = useSelector(state => state.idCardsInBasket);
-  const isModalFirstActiveID = useSelector(state => state.isModalFirstActiveID);
+  const cards = useSelector(state => state.cards.cards);
+  // console.log(cards);
+  const idFavouriteCards = useSelector(state => state.fav.idFavouriteCards);
+  const idCardsInBasket = useSelector(state => state.bask.idCardsInBasket);
+  const isModalFirstActiveID = useSelector(state => state.modalsFlags.isModalFirstActiveID);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();

@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BasketFooter } from './BasketFooter';
 
 export  function BasketPage() {
-  const cards = useSelector(state => state.cards);
-  const idCardsInBasket = useSelector(state => state.idCardsInBasket);
-  const isModalSecondActiveId = useSelector(state => state.isModalSecondActiveId);
+  const cards = useSelector(state => state.cards.cards);
+  const idCardsInBasket = useSelector(state => state.bask.idCardsInBasket);
+  const isModalSecondActiveId = useSelector(state => state.modalsFlags.isModalSecondActiveId);
   const dispatch = useDispatch();
 
   function handleClickDelete(deletedId) {
@@ -21,13 +21,15 @@ export  function BasketPage() {
     <div>
       <div className='main column'>
         <BasketCards 
-          cards={cards.filter(card => Object.keys(idCardsInBasket).includes(`${card.id}`))}
+          basketCards={cards.filter(card => Object.keys(idCardsInBasket).includes(`${card.id}`))}
           handleClickBtn={(id) => {
             handleClickModal(id)
           }}
           isStar={false}
           isButton={false}
           isCloseButton={true}
+          idCardsInBasket= {idCardsInBasket}
+
         />
         {isModalSecondActiveId &&
           < Modal
