@@ -224,27 +224,29 @@ body {
   transform: scale(1.2);
 }
 
-.basket-footer {
+.basket-footer h3 {
+  text-align: center;
+  margin: 40px 0 5px 0;
+}
+
+form {
+  width: fit-content;
   margin: 0 auto;
 }
 
 form label {
   font-size: 14px;
   color: rgb(100, 100, 91);
-  /* margin-bottom: 22px; */
-  display: block;
-  margin-top: 22px;
-
+  display:inline-block;
+  margin-top: 23px;
 }
 
 form input {
   display: block;
-  width: 376px;
+  width: 426px;
   height: 36px;
   border: 1px solid rgb(65, 59, 59) ;
   border-radius: 5px;
-  /* margin-bottom: 22px; */
-
 }
 
 form p {
@@ -255,8 +257,15 @@ form p {
 
 form button {
   display: block;
-  margin-top: 20px;
-  color: green;
-  height: 34px;
-  padding: 10px;
+  margin: 0 auto;
+  margin-top: 28px;
+  color: rgb(9, 63, 9);
+  padding: 10px 20px;
+  font-size: 20px;
+  border: 1px solid rgb(65, 59, 59);
+  border-radius: 5px;
+}
+
+form button:hover {
+  box-shadow: inset 3px 4px 6px 3px rgb(110, 107, 107, 0.3);
 }

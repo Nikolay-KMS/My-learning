@@ -49,7 +49,7 @@ const BuyForm = (props) => {
     <div className='basket-footer'>
       <h3>Please write your contact details</h3>
       <form onSubmit={formik.handleSubmit}>
-        <div>
+        {/* <div> */}
           <label htmlFor='firstName'> First Name </label>
           <input 
             id='firstName'
@@ -57,9 +57,9 @@ const BuyForm = (props) => {
             {...formik.getFieldProps('firstName')}
             ></input>
           {formik.touched.firstName && formik.errors.firstName ? <p>{formik.errors.firstName}</p> : null}
-        </div>
+        {/* </div> */}
 
-        <div>
+        {/* <div> */}
           <label htmlFor='lastName'> Last Name </label>
           <input 
             id='lastName'
@@ -67,9 +67,9 @@ const BuyForm = (props) => {
             {...formik.getFieldProps('lastName')}
             ></input>
           {formik.touched.lastName && formik.errors.lastName ? <p>{formik.errors.lastName}</p> : null}
-        </div>
+        {/* </div> */}
 
-        <div>
+        {/* <div> */}
           <label htmlFor='age'> Age </label>
           <input 
             id='age'
@@ -77,9 +77,9 @@ const BuyForm = (props) => {
             {...formik.getFieldProps('age')}
             ></input>
           {formik.touched.age && formik.errors.age ? <p>{formik.errors.age}</p> : null}
-        </div>
+        {/* </div> */}
 
-        <div>
+        {/* <div> */}
           <label htmlFor='adress'> Delivery adress </label>
           <input 
             id='adress'
@@ -87,22 +87,22 @@ const BuyForm = (props) => {
             {...formik.getFieldProps('adress')}
             ></input>
           {formik.touched.adress && formik.errors.adress ? <p>{formik.errors.adress}</p> : null}
-        </div>
+        {/* </div> */}
 
-        <div>
+        {/* <div> */}
           <label htmlFor='phone'> Phone </label>
           <PatternFormat format="+380 (##) ### ## ##" allowEmptyFormatting mask="_" 
             id='phone'
           {...formik.getFieldProps('phone')}
           />
           {formik.touched.phone && formik.errors.phone ? <p>{formik.errors.phone}</p> : null}
-        </div>
+        {/* </div> */}
 
-        <div>
+        {/* <div> */}
           <button 
             type='submit'
             >Checkout</button>
-        </div>
+        {/* </div> */}
       </form>
   </div>
 
