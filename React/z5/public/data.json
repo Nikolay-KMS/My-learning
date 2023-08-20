@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Воїни світла. Воїни добра",
+    "price": 100,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/%22Warriors_of_Light._Warriors_of_Good%22_2023_postage_stamp.jpg",
+    "id": 1,
+    "color": ["red"]
+  },
+  {
+    "name": "Марка «ПТН ПНХ!",
+    "price": 110,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/%D0%9C%D0%B0%D1%80%D0%BA%D0%B0_%22%D0%9F%D0%A2%D0%9D_%D0%9F%D0%9D%D0%A5%21%22.png",
+    "id": 2,
+    "color": ["purple", "green"]
+  },
+  {
+    "name": "Марка «Kalush Orchestra»",
+    "price": 120,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/%D0%9C%D0%B0%D1%80%D0%BA%D0%B0_%22KALUSH_Orchestra%22.png",
+    "id": 3,
+    "color": ["blue", "grey"]
+  },
+  {
+    "name": "Марка «Русскій воєнний корабль, іді… !»",
+    "price": 130,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Stamp_of_Ukraine_s1984.jpg",
+    "id": 4,
+    "color": ["red", "yellow"]
+  },
+  {
+    "name": "Марка «Русскій воєнний корабль… ВСЬО!»",
+    "price": 140,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Stamp_of_Ukraine_s1986.jpg/800px-Stamp_of_Ukraine_s1986.jpg",
+    "id": 5,
+    "color": ["orange", "green"]
+  },
+  {
+    "name": "Марка «Доброго вечора, ми з України!»",
+    "price": 150,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Stamp_of_Ukraine_s1989.jpg",
+    "id": 6,
+    "color": ["red", "green"]
+  },
+  {
+    "name": "Марка «Кримський міст на біс!»",
+    "price": 160,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Stamp_of_Ukraine_s2011.jpg",
+    "id": 7,
+    "color": ["grey", "orange"]
+  },
+  {
+    "name": "Марковий аркуш «Зброя Перемоги»",
+    "price": 170,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/34/Stamp_of_Ukraine_s2014%E2%80%942019.jpg",
+    "id": 8,
+    "color": ["yellow", "green"]
+  },
+  {
+    "name": "Марка «Europa. Історії та міфи»",
+    "price": 180,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/42/%D0%86%D1%81%D1%82%D0%BE%D1%80%D1%96%D1%97_%D1%82%D0%B0_%D0%BC%D1%96%D1%84%D0%B8_%28%D0%A1%D0%B2%D0%B0%D1%80%D0%BE%D0%B3%29.jpg",
+    "id": 9,
+    "color": ["orange", "grey"]
+  },
+  {
+    "name": "Поштовий блок «Культурні епохи України. Сармати»",
+    "price": 190,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Stamp_of_Ukraine_s2002.jpg/1024px-Stamp_of_Ukraine_s2002.jpg",
+    "id": 10,
+    "color": ["red", "yellow"]
+  },
+  {
+    "name": "Тризуб",
+    "price": 200,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/%D0%A2%D1%80%D0%B8%D0%B7%D1%83%D0%B1_-_cover_%282022%29.jpg/1280px-%D0%A2%D1%80%D0%B8%D0%B7%D1%83%D0%B1_-_cover_%282022%29.jpg",
+    "id": 11,
+    "color": ["blue", "green"]
+  },
+  {
+    "name": "Марка «Слава Силам оборони і безпеки України! Головне управління розвідки Міністерства оборони України»[",
+    "price": 210,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Post_stamp_GUR.png",
+    "id": 12,
+    "color": ["red", "purple"]
+  }
+]
