@@ -12,7 +12,7 @@ export const BuyForm = (props) => {
     firstName: Yup.string()
     .max(10, 'Must be 10 characters or less')
     .min(2, 'Must be 2 characters or more')
-    .required(),
+    .required('Required'),
     lastName: Yup.string()
       .max(10, 'Must be 10 characters or less')
       .min(2, 'Must be 2 characters or more')
@@ -36,20 +36,25 @@ export const BuyForm = (props) => {
   return (
     <Formik
       initialValues={{
-        firstName: '1',
-        lastName: '2',
-        age: '3',
-        adress: '4',
+        firstName: '',
+        lastName: '',
+        age: '',
+        adress: '',
         phone: '',
       }}
 
       validationSchema={validationSchema}
 
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values) => {
         console.log('User information:', values);
         console.log('Purchased items:', cards);
         localStorage.removeItem('basket');
-        setSubmitting(false);
+
+        values.firstName= '';
+        values.lastName= '';
+        values.age= '';
+        values.adress= '';
+        values.phone= '';
       }}
     >
       <Form>
