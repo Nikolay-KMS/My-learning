@@ -3,9 +3,10 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Input } from "./Input";
 import { InputPhone } from "./InputPhone";
+import { memo } from "react";
 
 
-export const BuyForm = (props) => {
+export const BuyForm = memo( (props) => {
   const cards = props.cards;
 
   const validationSchema = Yup.object().shape({
@@ -21,8 +22,7 @@ export const BuyForm = (props) => {
       .required('Required')
       .min(10, "Too little")
       .max(100, 'Too much!')
-      .integer('Must be integer')
-    ,
+      .integer('Must be integer')    ,
     adress: Yup.string()
       .max(100, 'Must be 100 characters or less')
       .min(2, 'Must be 2 characters or more')
@@ -61,24 +61,20 @@ export const BuyForm = (props) => {
         <Field name='firstName' type="text" label='First Name' component={Input} />
         <ErrorMessage name='firstName' />
 
-        <Field name='lastName' type='text' component={Input} />
+        <Field name='lastName' type='text' label='Last Name' component={Input} />
         <ErrorMessage name='lastName' />
 
-        <Field name='age' type='number' component={Input} />
+        <Field name='age' type='number' label='Age' component={Input} />
         <ErrorMessage name='age' />
 
-        <Field name='adress' type='text' component={Input} />
+        <Field name='adress' type='text' label='Delivery adress' component={Input} />
         <ErrorMessage name='adress' />
 
-        <Field
-          name="phone"
-          type="text"
-          component={InputPhone}
-        />
+        <Field name="phone" type="text" label='Phone' component={InputPhone} />
         <ErrorMessage name='phone' />
 
         <button type='submit'>Checkout</button>
       </Form>
     </Formik>
   )
-}
+})

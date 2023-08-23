@@ -8,7 +8,7 @@ export function Modal(props) {
   
   useEffect(() => {
     modalRef.current.focus();
-  })
+  }, [])
 
   function handleKeyUp () {
     if(event.code === 'Escape') {props.handleCloseModal()}
@@ -44,7 +44,7 @@ export function Modal(props) {
                 text={"Ok"} 
                 handleClickBtn={() => {
                 props.handleClickBtn(props.id)
-                props.handleCloseModal()
+                // props.handleCloseModal()
                 }}       
                 className= "modalButton"             
               />

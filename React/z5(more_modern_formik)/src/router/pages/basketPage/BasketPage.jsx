@@ -29,7 +29,6 @@ export  function BasketPage() {
           isButton={false}
           isCloseButton={true}
           idCardsInBasket= {idCardsInBasket}
-
         />
         {isModalSecondActiveId &&
           < Modal

@@ -4,7 +4,8 @@
 export const Input= ({field, ...props})=> {
   return (
     <div>
-      <input  {...field} {...props} />
+      <label htmlFor={field.name} >{props.label}</label>
+      <input  {...field} {...props} id={field.name}/>
     </div>
   )
 }

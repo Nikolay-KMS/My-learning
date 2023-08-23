@@ -17,9 +17,8 @@ export const basketReducer= (state= initialState, action) => {
         {...state.idCardsInBasket, [action.payload.id]: state.idCardsInBasket[action.payload.id] + 1}}
         
     case 'REMOVE_CARD_IN_BASKET':
-      const newObj = {...state.idCardsInBasket};
-      delete newObj[action.payload.id];
-      return {...state, idCardsInBasket: newObj}
+      const {[action.payload.id]: deletedId, ...newIdCardsInBasket}= state.idCardsInBasket;
+      return {...state, idCardsInBasket: newIdCardsInBasket}
   
     default:
       return state;

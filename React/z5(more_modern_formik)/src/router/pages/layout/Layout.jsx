@@ -29,6 +29,8 @@ export function Layout() {
     localStorage.setItem('favour', JSON.stringify(idFavouriteCards)) 
   }, [idFavouriteCards])
 
+  // console.count('Render Layout');
+
   return (
     <div>
       <div className='navbar'>
