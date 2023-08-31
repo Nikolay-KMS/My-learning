@@ -52,6 +52,7 @@ export function MainPage() {
           isCloseButton={true}
           id={isModalFirstActiveID}
           handleClickBtn={(id) => {
+            
             if (idCardsInBasket?.[id]) {
               dispatch({type: 'INCREASE_QUANTITY_CARD_IN_BASKET', payload: {id: id}})
             } else {

@@ -1,0 +1,293 @@
+
+body {
+  background-color: #fafafa; 
+  font-family: Helvetica, sans-serif;
+}
+
+.flag-loading {
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+button {
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.navbar {
+  /* position:fixed; */
+  display: flex;
+  gap: 40px;
+  min-height: 50px;
+  top: 0;
+  width: 100%;
+  opacity: 0.95;
+  background-color: rgb(65, 46, 46);
+  color: #fff;  
+  z-index: 4;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navbar a:hover{
+  color: #3944e9;
+}
+
+.navbar a.active{
+  color: #3944e9;
+}
+
+.iconStar, .iconBasket, .iconStarText, .iconBasketText, button {
+  cursor: pointer;
+}
+
+.icons {
+  /* position: fixed; */
+  /* top: 50px; */
+  right: 0;
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding-right: 10px;
+  background-color: #fafafa;
+  opacity: 0.95;
+  z-index: 4;
+}
+.icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon p {
+  padding-left: 10px;
+}
+.main {  
+  /* margin-top: 120px; */
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.column .cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+}
+.main .cards .row .button {
+  align-self: center;
+}
+.card-quantity {
+  align-self: center;
+}
+
+.card {
+  width: 300px;
+  background-color: #fffafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 8px 4px 9px rgb(110, 107, 107, 0.3);
+  border-radius: 5px;
+}
+
+.card-table {
+  width: 600px;
+  background-color: #fffafa;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 8px 4px 9px rgb(110, 107, 107, 0.3);
+  border-radius: 5px;
+  align-items: center;
+}
+
+.main .content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+.card h3 {
+  margin: 1px 1px 10px 1px;
+}
+
+.card-img {
+  width: 250px;
+}
+
+.card-footer {
+  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.goodsColor {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0;
+
+}
+
+.goodColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.card-footer .iconStar {
+  cursor: pointer;
+}
+
+.modalButton {
+  padding: 5px 10px;
+  border-color: rgb(58, 85, 62);
+  border-radius: 5px;
+  /* cursor: pointer; */
+  min-width: 80px;
+  margin: 0 15px;
+}
+
+.button:hover:not(.btnClose) {
+  box-shadow: inset 3px 4px 6px 3px rgb(110, 107, 107, 0.3);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.modalBackFond {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.modalWindow {
+  max-width: 510px;
+  color: #000;
+  background-color: rgb(231, 245, 235);
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #3f9272; */
+  padding-left: 20px;
+}
+
+.modalHeader h2 {
+  font-weight: 500;
+  margin: 15px 0;
+}
+
+.modalBody {
+  padding: 15px 40px;
+}
+
+.btnClose {
+  align-self:self-start;
+  border: none;
+  background-color: transparent;
+  color: red;
+  padding: 0 0px;
+  font-size: 25px;
+  margin: 5px 10px 0 20px;
+}
+
+.btnClose:hover {
+  background-color: transparent;
+  color: rgb(207, 7, 0);
+  transform: scale(1.2);
+}
+
+.basket-footer h3 {
+  text-align: center;
+  margin: 40px 0 5px 0;
+}
+
+form {
+  width: fit-content;
+  margin: 0 auto;
+  color: red;
+}
+
+form label {
+  font-size: 14px;
+  color: rgb(100, 100, 91);
+  display:block;
+  margin-top: 23px;
+  /* margin-bottom: 23px; */
+  /* padding-top: 23px; */
+}
+
+form input {
+  display: block;
+  width: 426px;
+  height: 36px;
+  border: 1px solid rgb(65, 59, 59) ;
+  border-radius: 5px;
+}
+
+form p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: red;
+}
+
+form button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 28px;
+  color: rgb(9, 63, 9);
+  padding: 10px 20px;
+  font-size: 20px;
+  border: 1px solid rgb(65, 59, 59);
+  border-radius: 5px;
+}
+
+form button:hover {
+  box-shadow: inset 3px 4px 6px 3px rgb(110, 107, 107, 0.3);
+}
