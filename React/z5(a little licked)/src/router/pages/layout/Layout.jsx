@@ -14,7 +14,7 @@ export function Layout() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCardsThunk())
+    dispatch(getCardsThunk());
   }, [])
 
   useEffect(() => {
@@ -22,11 +22,25 @@ export function Layout() {
   }, [idCardsInBasket])
 
   useEffect(() => {
-    localStorage.setItem('favour', JSON.stringify(idFavouriteCards))
+    localStorage.setItem('favour', JSON.stringify(idFavouriteCards));
   }, [idFavouriteCards])
 
+  const handleClickBtnOk= (id)=> {
+    dispatch({ type: 'ADD_ID_CARD_IN_BASKET', payload: { id: id } });
+    dispatch({ type: 'PASS_FALSE_TO_IS_FIRST_MODAL_ACTIVE' });
+  }
+
+  const handleCloseFirstModal= ()=> {
+    dispatch({ type: 'PASS_FALSE_TO_IS_FIRST_MODAL_ACTIVE' });
+  }
+
   function handleClickDelete(deletedId) {
-    dispatch({ type: 'REMOVE_CARD_IN_BASKET', payload: { id: deletedId } })
+    dispatch({ type: 'REMOVE_CARD_IN_BASKET', payload: { id: deletedId } });
+    dispatch({ type: 'PASS_FALSE_TO_IS_SECOND_MODAL_ACTIVE' });
+  }
+
+  const handleCloseSecondModal= ()=> {
+    dispatch({ type: 'PASS_FALSE_TO_IS_SECOND_MODAL_ACTIVE' });    
   }
 
   return (
@@ -45,23 +59,17 @@ export function Layout() {
         < Modal
           headerText={"Do you want to add this good to the basket?"}
           bodyText={"Do you really want to do it?"}
-          handleCloseModal={() => {
-            dispatch({ type: 'PASS_FALSE_TO_IS_FIRST_MODAL_ACTIVE' })
-          }}
+          handleCloseModal={handleCloseFirstModal}
           isCloseButton={true}
           id={isModalFirstActiveID}
-          handleClickBtn={(id) => {
-            dispatch({ type: 'ADD_ID_CARD_IN_BASKET', payload: { id: id } })
-          }}
+          handleClickBtn={(id)=> handleClickBtnOk(id)}
         />}
 
       {isModalSecondActiveId &&
         < Modal
           headerText={"Do you want to remove this item from your shopping cart?"}
           bodyText={"Do you really want to do it?"}
-          handleCloseModal={() => {
-            dispatch({ type: 'PASS_FALSE_TO_IS_SECOND_MODAL_ACTIVE' })
-          }}
+          handleCloseModal={handleCloseSecondModal}
           isCloseButton={true}
           id={isModalSecondActiveId}
           handleClickBtn={(id) => handleClickDelete(id)}
