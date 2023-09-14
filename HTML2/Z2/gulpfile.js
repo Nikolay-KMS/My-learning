@@ -86,7 +86,7 @@ gulp.task('dev', gulp.parallel (serverRun, watchAll))
 
 // gulp.task('clean', cleanAll)
 // gulp.task('create', gulp.parallel (cloneHtml, styles, scripts, img));
-// gulp.task('default', gulp.parallel (serverRun, watchAll));
+gulp.task('default', gulp.parallel (serverRun, watchAll));
 
 
 

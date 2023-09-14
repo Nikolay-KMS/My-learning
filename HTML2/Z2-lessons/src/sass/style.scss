@@ -1,18 +1,27 @@
 body {
-  background-color: #ffa0a0;
+  // background-color: #ffa0a0;
+  opacity: 0.8;
 }
+
 h1 {
   color: darkslategrey;
 }
+
 h2 {
   color: darkslategrey;
   font-size: 15px;
 }
+
 h3 {
   color: rgb(65, 79, 47);
-  font-size: 45px;
+  font-size: 46px;
 }
+
 h4 {
   color: rgb(231, 241, 80);
   font-size: 45px;
+}
+
+#map {
+  height: 180px;
 }

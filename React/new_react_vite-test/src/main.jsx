@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import ReactDOM from 'react-dom/client'
-import {App} from './App.jsx'
+import App from './App.jsx'
 // import { createContext } from 'react'
 // import { Provider } from 'react-redux'
 
